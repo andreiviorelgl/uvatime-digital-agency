@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVATIME | Terms & Conditions</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:wght@400;700&family=Roboto+Condensed:wght@400;500;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'PT Sans', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .font-bebas {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: 2px solid;
+            cursor: pointer;
+            font-family: "Roboto Condensed", sans-serif;
+            letter-spacing: -.01em;
+        }
+
+        .btn:hover {
+            color: white;
+            background-color: #0000;
+        }
+
+        section {
+            padding: 2.5rem 1.5rem;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            font-family: "Roboto Condensed", sans-serif;
+            color: #9b9b9b;
+            font-weight: 400;
+            border: 1px solid #292828;
+            background-color: #121212;
+            border-radius: 100em;
+            padding: 10px 15px 8px;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-description {
+            color: #999;
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 1rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            z-index: 3;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            margin-top: -40px;
+            padding-top: 6em;
+            padding-bottom: 6em;
+            position: relative;
+            background-color: #0b0b0b;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .footer-grid {
+            display: flex;
+            margin-bottom: 7.5rem;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        .footer-links a {
+            color: #9b9b9b;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #999;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #9b9b9b;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+            padding: 16px;
+        }
+
+        .footer-section h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: #666;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            footer .logo-icon img {
+                height: 100px;
+            }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom-links a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #fff;
+        }
+
+        .text-divider {
+            color: #9b9b9b;
+            letter-spacing: -.01em;
+            text-transform: uppercase;
+            font-family: Nacelle;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .footer-locations {
+            display: flex;
+            margin-top: 1rem;
+            align-items: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Cookie Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            max-width: 28rem;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .modal h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            color: #ccc;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal p a {
+            text-decoration: underline;
+        }
+
+        /* Wrapper for inner content on legal pages */
+        .sections-wrapper {
+            z-index: 2;
+            background-color: #121212;
+            border-radius: 50px 50px 0 0;
+            margin-top: 120px; /* under nav instead of 90vh hero */
+            padding-top: 40px;
+            padding-bottom: 64px;
+            position: relative;
+        }
+
+        @media (max-width: 767px) {
+            .sections-wrapper {
+                border-radius: 30px 30px 0 0;
+                margin-top: 100px;
+            }
+        }
+
+        .back-home-btn {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%);
+            z-index: 60;
+            padding: 0.9rem 2.2rem;
+            font-size: 18px;
+            text-transform: uppercase;
+            backdrop-filter: blur(5px);
+            border-radius: 9999px;
+            background-color: #0b0b0bd9;
+            color: white;
+            width: 300px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            text-decoration: auto;
+            font-family: 'Roboto Condensed', sans-serif;
+            transition: color .4s cubic-bezier(.23, 1, .32, 1);
+            letter-spacing: -.01em;
+        }
+
+        .back-home-btn:hover {
+            color: #9b9b9b;
+        }
+
+        /* Slightly smaller on mobile */
+        @media (max-width: 480px) {
+            .back-home-btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 0.8rem;
+                bottom: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<a href="/" class="back-home-btn">
+    Back to homepage
+</a>
+<!-- Cookie Modal -->
+<div class="modal-overlay" id="cookieModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeCookieModal()">✕</button>
+        <h2>COOKIES POLICY</h2>
+        <p>
+            We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our
+            traffic. By clicking "Accept", you consent to our use of cookies. Learn more by reading our <a
+                href="privacy.html">Privacy
+            Policy</a>.
+        </p>
+        <button class="btn" onclick="closeCookieModal()">ACCEPT</button>
+    </div>
+</div>
+
+<!-- Legal Content -->
+<div class="sections-wrapper">
+    <section id="terms">
+        <div class="container">
+            <p class="section-label">Legal</p>
+            <h1 class="section-title">TERMS & CONDITIONS</h1>
+            <p class="section-description">
+                These Terms & Conditions govern the use of the UVATIME website and our digital services. By accessing
+                this website
+                or working with us, you agree to these terms. If you do not agree, please do not use this website or our
+                services.
+            </p>
+
+            <div style="max-width: 800px; margin: 3rem auto 0; text-align: left; color: #ccc; font-size: 0.95rem; line-height: 1.8;">
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">1. WHO WE
+                    ARE</h2>
+                <p>
+                    UVATIME is a digital agency focused on e-commerce, Shopify development, software development, and
+                    mobile
+                    applications. Depending on the project, services are provided by:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>UVATIME S.R.L., based in Brașov, Romania; and/or</li>
+                    <li>UVATIME LLC, based in Jackson, Wyoming, USA.</li>
+                </ul>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">2. SCOPE OF
+                    SERVICES</h2>
+                <p>
+                    We offer, among others, the following services:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>Shopify development and optimization;</li>
+                    <li>Custom software and SaaS development;</li>
+                    <li>Native and cross-platform mobile app development;</li>
+                    <li>UI/UX design and prototyping;</li>
+                    <li>Performance, SEO, and accessibility improvements.</li>
+                </ul>
+                <p>
+                    The exact scope, deliverables, deadlines, and pricing are defined in a written offer, statement of
+                    work,
+                    or service agreement agreed with each client.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">3. QUOTES,
+                    PAYMENTS & BILLING</h2>
+                <p>
+                    All prices are provided in writing (email, proposal, or contract) before the project starts. Unless
+                    otherwise
+                    agreed:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>A non-refundable planning / discovery retainer (e.g. 20%) may be required before work begins;
+                    </li>
+                    <li>Remaining amounts are typically invoiced upfront before execution or in agreed milestones;</li>
+                    <li>Invoices must be paid within the due date specified on the invoice.</li>
+                </ul>
+                <p>
+                    Late payments may delay delivery and can lead to the suspension of services until payment is
+                    received.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">4. CLIENT
+                    RESPONSIBILITIES</h2>
+                <p>
+                    To deliver quality work on time, we need your involvement. As a client, you agree to:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>Provide accurate and complete information and materials (texts, images, brand assets, etc.);
+                    </li>
+                    <li>Review and approve deliverables within a reasonable timeframe;</li>
+                    <li>Obtain all necessary approvals and rights for content you ask us to use;</li>
+                    <li>Ensure access to required platforms (Shopify, hosting, analytics, etc.).</li>
+                </ul>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">5.
+                    INTELLECTUAL PROPERTY</h2>
+                <p>
+                    Unless otherwise agreed in writing:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>You own the final approved deliverables that you have fully paid for (e.g. website theme, app
+                        code handed over, designs, etc.);
+                    </li>
+                    <li>We retain all rights to our internal tools, frameworks, libraries, and know-how used to deliver
+                        the project;
+                    </li>
+                    <li>We may showcase non-confidential work (e.g. screenshots, case studies) in our portfolio, unless
+                        you explicitly ask us not to.
+                    </li>
+                </ul>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">6.
+                    THIRD-PARTY SERVICES & PLATFORMS</h2>
+                <p>
+                    Many projects rely on third-party platforms such as Shopify, hosting providers, analytics tools,
+                    payment
+                    gateways, and other apps. You are responsible for:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>Creating and maintaining your own accounts;</li>
+                    <li>Reviewing and accepting their terms and policies;</li>
+                    <li>Paying any recurring fees charged by those third parties.</li>
+                </ul>
+                <p>
+                    We are not responsible for changes, outages, or limitations introduced by third-party services.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">7. LIMITATION
+                    OF LIABILITY</h2>
+                <p>
+                    We always aim to deliver stable, high-quality work. However, to the maximum extent permitted by law,
+                    UVATIME
+                    is not liable for:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>Indirect, incidental, or consequential damages (lost sales, loss of data, loss of profit,
+                        etc.);
+                    </li>
+                    <li>Issues caused by incorrect use, modifications performed by third parties, or third-party
+                        platform changes;
+                    </li>
+                    <li>Downtime, bugs, or security issues originating from hosting providers or external services.</li>
+                </ul>
+                <p>
+                    Our total liability in connection with any project is limited to the total amount you have paid us
+                    for
+                    that specific project.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">8.
+                    CONFIDENTIALITY</h2>
+                <p>
+                    Both parties agree to keep confidential any non-public information received from the other party in
+                    the
+                    context of the collaboration (business strategies, internal processes, login details, etc.), except
+                    where
+                    disclosure is required by law or with written consent.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">9. DATA
+                    PROTECTION</h2>
+                <p>
+                    When we process personal data on your behalf (for example, in the context of your website or online
+                    shop),
+                    we do so in line with our <a href="privacy.html" style="color:#fff; text-decoration:underline;">Privacy
+                    Policy</a>
+                    and any separate data processing agreement we may sign with you.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">10. GOVERNING
+                    LAW</h2>
+                <p>
+                    Unless otherwise agreed in a specific contract:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>For services provided by UVATIME S.R.L., these terms are governed by Romanian law;</li>
+                    <li>For services provided by UVATIME LLC, these terms are governed by the laws of the State of
+                        Wyoming, USA.
+                    </li>
+                </ul>
+                <p>
+                    Any dispute will first be addressed amicably. If no agreement is reached, the competent courts of
+                    the
+                    relevant jurisdiction shall have authority.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">11. CHANGES
+                    TO THESE TERMS</h2>
+                <p>
+                    We may update these Terms & Conditions from time to time. When we do, we will update the “Last
+                    updated” date
+                    at the bottom of this page. Continued use of the website after such changes means you accept the
+                    updated terms.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">12.
+                    CONTACT</h2>
+                <p>
+                    For any questions regarding these Terms & Conditions, you can contact us at:
+                </p>
+                <p>
+                    Email: <a href="mailto:office@uvatime.com" style="color:#fff; text-decoration:underline;">office@uvatime.com</a><br>
+                    Phone: <a href="tel:+40752883350" style="color:#fff; text-decoration:underline;">+40 752 883 350</a>
+                </p>
+
+                <p style="margin-top:2rem; font-size:0.8rem; color:#777;">
+                    Last updated: January 2025. This text is provided as a general template and does not replace
+                    personalised legal advice.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom: 4rem;">
+                    <div class="logo-icon">
+                        <img src="../assets/uvatime_logo_white.png" alt="Logo">
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="/#about">About </a>
+                    <div class="text-divider">/</div>
+                    <a href="/#services">Services</a>
+                    <div class="text-divider">/</div>
+                    <a href="/#work">Portfolio</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Get in touch</h4>
+                <a href="mailto:office@uvatime.com" style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff;">office@uvatime.com</a>
+                <a href="tel:+40752883350">+40752883350</a>
+
+                <div class="footer-locations">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/>
+                        <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                    Brasov, Romania
+                </div>
+
+                <div class="footer-locations">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/>
+                        <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                    Jackson, Wyoming, USA
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Copyright UVATIME S.R.L.</p>
+            <div class="footer-bottom-links">
+                <a href="/terms-and-conditions">Terms & Conditions</a>
+                <a href="/privacy-folder">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Show cookie modal after 1 second
+    setTimeout(() => {
+        const modal = document.getElementById('cookieModal');
+        if (modal) modal.classList.add('active');
+    }, 1000);
+
+    function closeCookieModal() {
+        const modal = document.getElementById('cookieModal');
+        if (modal) modal.classList.remove('active');
+    }
+</script>
+</body>
+</html>

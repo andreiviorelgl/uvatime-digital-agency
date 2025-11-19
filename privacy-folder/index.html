@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVATIME | Privacy Policy</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:wght@400;700&family=Roboto+Condensed:wght@400;500;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'PT Sans', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .font-bebas {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: 2px solid;
+            cursor: pointer;
+            font-family: "Roboto Condensed", sans-serif;
+            letter-spacing: -.01em;
+        }
+
+        .btn:hover {
+            color: white;
+            background-color: #0000;
+        }
+
+        section {
+            padding: 2.5rem 1.5rem;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            font-family: "Roboto Condensed", sans-serif;
+            color: #9b9b9b;
+            font-weight: 400;
+            border: 1px solid #292828;
+            background-color: #121212;
+            border-radius: 100em;
+            padding: 10px 15px 8px;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-description {
+            color: #999;
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 1rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            z-index: 3;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            margin-top: -40px;
+            padding-top: 6em;
+            padding-bottom: 6em;
+            position: relative;
+            background-color: #0b0b0b;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .footer-grid {
+            display: flex;
+            margin-bottom: 7.5rem;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        .footer-links a {
+            color: #9b9b9b;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #999;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #9b9b9b;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+            padding: 16px;
+        }
+
+        .footer-section h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: #666;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            footer .logo-icon img {
+                height: 100px;
+            }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom-links a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #fff;
+        }
+
+        .text-divider {
+            color: #9b9b9b;
+            letter-spacing: -.01em;
+            text-transform: uppercase;
+            font-family: Nacelle;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .footer-locations {
+            display: flex;
+            margin-top: 1rem;
+            align-items: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Cookie Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            max-width: 28rem;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .modal h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            color: #ccc;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal p a {
+            text-decoration: underline;
+        }
+
+        /* Wrapper for inner content on legal pages */
+        .sections-wrapper {
+            z-index: 2;
+            background-color: #121212;
+            border-radius: 50px 50px 0 0;
+            margin-top: 120px; /* under nav instead of 90vh hero */
+            padding-top: 40px;
+            padding-bottom: 64px;
+            position: relative;
+        }
+
+        @media (max-width: 767px) {
+            .sections-wrapper {
+                border-radius: 30px 30px 0 0;
+                margin-top: 100px;
+            }
+        }
+
+        .back-home-btn {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%);
+            z-index: 60;
+            padding: 0.9rem 2.2rem;
+            font-size: 18px;
+             text-transform: uppercase;
+            backdrop-filter: blur(5px);
+            border-radius: 9999px;
+            background-color: #0b0b0bd9;
+            color: white;
+            width: 300px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            text-decoration: auto;
+            font-family: 'Roboto Condensed', sans-serif;
+            transition: color .4s
+            cubic-bezier(.23, 1, .32, 1);
+            letter-spacing: -.01em;
+        }
+
+        .back-home-btn:hover {
+            color: #9b9b9b;
+        }
+
+        /* Slightly smaller on mobile */
+        @media (max-width: 480px) {
+            .back-home-btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 0.8rem;
+                bottom: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<a href="/" class="back-home-btn">
+    Back to homepage
+</a>
+<!-- Cookie Modal -->
+<div class="modal-overlay" id="cookieModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeCookieModal()">✕</button>
+        <h2>COOKIES POLICY</h2>
+        <p>
+            We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our
+            traffic. By clicking "Accept", you consent to our use of cookies. Learn more by reading our <a
+                href="privacy.html">Privacy
+            Policy</a>.
+        </p>
+        <button class="btn" onclick="closeCookieModal()">ACCEPT</button>
+    </div>
+</div>
+
+
+<!-- Legal Content -->
+<div class="sections-wrapper">
+    <section id="privacy">
+        <div class="container">
+            <p class="section-label">Legal</p>
+            <h1 class="section-title">PRIVACY POLICY</h1>
+            <p class="section-description">
+                This Privacy Policy explains how UVATIME collects, uses, and protects your personal data when you visit
+                our
+                website or contact us about our services.
+            </p>
+
+            <div style="max-width: 800px; margin: 3rem auto 0; text-align: left; color: #ccc; font-size: 0.95rem; line-height: 1.8;">
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">1. WHO WE
+                    ARE</h2>
+                <p>
+                    UVATIME is a digital agency providing web development, Shopify, software, and mobile app services.
+                    For the purposes of data protection law (including the EU General Data Protection Regulation – GDPR,
+                    where applicable), the data controller may be:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>UVATIME S.R.L., Brașov, Romania; and/or</li>
+                    <li>UVATIME LLC, Jackson, Wyoming, USA;</li>
+                </ul>
+                <p>
+                    depending on your location and the specific engagement.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">2. DATA WE
+                    MAY COLLECT</h2>
+                <p>We may collect the following categories of personal data:</p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li><strong>Contact data:</strong> name, email address, phone number, company name, and any
+                        information you provide when contacting us.
+                    </li>
+                    <li><strong>Project-related data:</strong> information about your business, website, or app that you
+                        share for the purpose of working with us.
+                    </li>
+                    <li><strong>Technical data:</strong> IP address, device type, browser type, operating system,
+                        approximate location, pages visited, and similar analytics data.
+                    </li>
+                    <li><strong>Cookie & tracking data:</strong> information collected via cookies and similar
+                        technologies (see Section 6).
+                    </li>
+                </ul>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">3. HOW WE USE
+                    YOUR DATA</h2>
+                <p>We use your personal data for the following purposes:</p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>To respond to your messages, enquiries, and project requests;</li>
+                    <li>To prepare proposals, quotes, and service agreements;</li>
+                    <li>To manage and deliver projects and services you have requested from us;</li>
+                    <li>To improve our website, services, and user experience;</li>
+                    <li>To analyse website traffic and performance (e.g. via analytics tools);</li>
+                    <li>To comply with legal and regulatory obligations (e.g. accounting, taxes).</li>
+                </ul>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">4. LEGAL
+                    BASES (FOR EU / EEA USERS)</h2>
+                <p>Where GDPR applies, we rely on the following legal bases to process your data:</p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li><strong>Contractual necessity:</strong> to take steps at your request before entering into a
+                        contract and to perform a contract with you;
+                    </li>
+                    <li><strong>Legitimate interests:</strong> to improve our services, run and secure our website, and
+                        grow our business in a reasonable way;
+                    </li>
+                    <li><strong>Legal obligation:</strong> to comply with applicable laws (e.g. tax, accounting);</li>
+                    <li><strong>Consent:</strong> for certain cookies, newsletter subscriptions, or optional marketing
+                        communications (where applicable).
+                    </li>
+                </ul>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">5. HOW LONG
+                    WE KEEP YOUR DATA</h2>
+                <p>
+                    We retain personal data only for as long as necessary for the purposes for which it was collected,
+                    including
+                    satisfying any legal, accounting, or reporting requirements. For example:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>Basic contact and contract data may be kept for the duration of our collaboration and a
+                        reasonable period after;
+                    </li>
+                    <li>Accounting and invoicing records are typically kept for the period required by law;</li>
+                    <li>Analytics and technical data may be kept in aggregated or anonymised form where possible.</li>
+                </ul>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">6. COOKIES &
+                    TRACKING TECHNOLOGIES</h2>
+                <p>
+                    Our website may use cookies and similar technologies to:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>Remember your preferences and improve usability;</li>
+                    <li>Analyse traffic and performance (e.g. which pages are visited and how often);</li>
+                    <li>Support security and basic functionality.</li>
+                </ul>
+                <p>
+                    When you first visit the website, you may see a cookie notice or banner explaining that we use
+                    cookies and
+                    linking back to this Privacy Policy. You can manage cookies through your browser settings and, where
+                    applicable, through our cookie banner.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">7. SHARING
+                    YOUR DATA</h2>
+                <p>
+                    We do not sell your personal data. We may share data with:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>Service providers and subcontractors who help us deliver our services (e.g. hosting, email,
+                        project tools), under confidentiality obligations;
+                    </li>
+                    <li>Professional advisers (lawyers, accountants, auditors) where necessary;</li>
+                    <li>Authorities or regulators where required by law.</li>
+                </ul>
+                <p>
+                    Where we use third-party tools (such as Shopify, analytics providers, or communication platforms),
+                    their
+                    own privacy policies also apply.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">8.
+                    INTERNATIONAL TRANSFERS</h2>
+                <p>
+                    Because UVATIME operates from both the EU (Romania) and the US (Wyoming), and uses global service
+                    providers,
+                    your data may be transferred outside your country or outside the European Economic Area (EEA).
+                </p>
+                <p>
+                    Where GDPR applies, we aim to ensure that such transfers are protected by appropriate safeguards,
+                    such as
+                    standard contractual clauses or equivalent measures, in line with applicable law.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">9. YOUR
+                    RIGHTS (EU / EEA USERS)</h2>
+                <p>
+                    Where GDPR applies, you may have the following rights regarding your personal data:
+                </p>
+                <ul style="margin:0.75rem 0 0.75rem 1.25rem;">
+                    <li>Right of access – to know what data we hold about you;</li>
+                    <li>Right to rectification – to request correction of inaccurate data;</li>
+                    <li>Right to erasure – to request deletion of your data, where applicable;</li>
+                    <li>Right to restriction of processing – in certain circumstances;</li>
+                    <li>Right to data portability – to receive your data in a structured, commonly used format;</li>
+                    <li>Right to object – to certain types of processing, including where based on legitimate
+                        interests;
+                    </li>
+                    <li>Right to withdraw consent – where processing is based on your consent.</li>
+                </ul>
+                <p>
+                    To exercise any of these rights, please contact us using the details below. We may need to verify
+                    your
+                    identity before responding.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">10.
+                    SECURITY</h2>
+                <p>
+                    We take reasonable technical and organisational measures to protect your data from unauthorised
+                    access,
+                    loss, misuse, or alteration. However, no transmission or storage system can be guaranteed to be 100%
+                    secure.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">11.
+                    THIRD-PARTY WEBSITES</h2>
+                <p>
+                    Our website may contain links to third-party websites (for example: Shopify stores, partners,
+                    tools).
+                    We are not responsible for the privacy practices or content of those websites. We encourage you to
+                    read
+                    their privacy policies separately.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">12. CHANGES
+                    TO THIS POLICY</h2>
+                <p>
+                    We may update this Privacy Policy from time to time. When we do, we will revise the “Last updated”
+                    date
+                    at the bottom of this page. Your continued use of the website after any changes constitutes your
+                    acceptance
+                    of the updated policy.
+                </p>
+
+                <h2 style="font-family:'Bebas Neue',sans-serif; font-size:1.6rem; margin:1.5rem 0 0.5rem;">13.
+                    CONTACT</h2>
+                <p>
+                    If you have any questions about this Privacy Policy or how we handle your data, please contact us
+                    at:
+                </p>
+                <p>
+                    Email: <a href="mailto:office@uvatime.com" style="color:#fff; text-decoration:underline;">office@uvatime.com</a><br>
+                    Phone: <a href="tel:+40752883350" style="color:#fff; text-decoration:underline;">+40 752 883 350</a>
+                </p>
+
+                <p style="margin-top:2rem; font-size:0.8rem; color:#777;">
+                    Last updated: January 2025. This text is provided as a general template and does not replace
+                    personalised legal advice.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom: 4rem;">
+                    <div class="logo-icon">
+                        <img src="../assets/uvatime_logo_white.png" alt="Logo">
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#about">About </a>
+                    <div class="text-divider">/</div>
+                    <a href="index.html#services">Services</a>
+                    <div class="text-divider">/</div>
+                    <a href="index.html#work">Portfolio</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Get in touch</h4>
+                <a href="mailto:office@uvatime.com" style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff;">office@uvatime.com</a>
+                <a href="tel:+40752883350">+40752883350</a>
+
+                <div class="footer-locations">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/>
+                        <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                    Brasov, Romania
+                </div>
+
+                <div class="footer-locations">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/>
+                        <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                    Jackson, Wyoming, USA
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Copyright UVATIME S.R.L.</p>
+            <div class="footer-bottom-links">
+                <a href="/terms-and-conditions">Terms & Conditions</a>
+                <a href="/privacy-folder">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Show cookie modal after 1 second
+    setTimeout(() => {
+        const modal = document.getElementById('cookieModal');
+        if (modal) modal.classList.add('active');
+    }, 1000);
+
+    function closeCookieModal() {
+        const modal = document.getElementById('cookieModal');
+        if (modal) modal.classList.remove('active');
+    }
+
+</script>
+</body>
+</html>

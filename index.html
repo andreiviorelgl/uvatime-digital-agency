@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVATIME | Digital Agency</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:wght@400;700&family=Roboto+Condensed:wght@400;500;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        /* Reset / base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'PT Sans', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .font-bebas {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+            font-family: "Roboto Condensed", sans-serif;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        nav.nav-hidden {
+            transform: translate3d(0, -100%, 0);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon img {
+            height: 30px;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            transition: color 0.2s ease, opacity 0.2s ease;
+            opacity: 0.85;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+            opacity: 1;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+            cursor: pointer;
+        }
+
+        .hamburger-line {
+            width: 1.5rem;
+            height: 2px;
+            background-color: #fff;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            padding: 0 1.5rem 1rem;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+        }
+
+        @media (min-width: 768px) {
+            .logo-icon img{
+                height: 65px;
+            }
+            .nav-links {
+                display: flex;
+            }
+
+            .hamburger {
+                display: none;
+            }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: 2px solid;
+            cursor: pointer;
+            font-family: "Roboto Condensed", sans-serif;
+            letter-spacing: -.01em;
+        }
+
+        .btn:hover {
+            color: #fff;
+            background-color: transparent;
+        }
+
+        /* Generic section layout */
+        section {
+            padding: 2.5rem 1.5rem;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 0.875rem;
+            font-family: "Roboto Condensed", sans-serif;
+            color: #9b9b9b;
+            font-weight: 400;
+            border: 1px solid #292828;
+            background-color: #121212;
+            border-radius: 100em;
+            margin-bottom: 40px;
+            padding: 10px 15px 8px;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-description {
+            color: #999;
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 1rem;
+            line-height: 1.8;
+        }
+
+        /* Grid helper */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Cards / team */
+        .card {
+            background-color: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: background-color 0.3s;
+        }
+
+        .card:hover {
+            background-color: #111;
+        }
+
+        .card-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        .card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .card .role {
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #999;
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        /* Service cards */
+        .service-card {
+            border-radius: 25px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            border: 2px solid #292828;
+            background-color: #0b0b0b;
+            transition: background-color 0.3s;
+        }
+
+        .service-card:hover {
+            background-color: #111;
+        }
+
+        .service-icon {
+            margin-bottom: 1.5rem;
+            max-height: 60px;
+        }
+
+        .service-icon img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .service-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #999;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Portfolio */
+        .portfolio-item {
+            border: 2px solid #292828;
+            background-color: #0b0b0b;
+            border-radius: 25px;
+            margin-bottom: 2em;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            grid-column-gap: 4em;
+            grid-row-gap: 4em;
+            position: sticky;
+            top: 6em;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-item.item-2 {
+            background-color: #101010;
+            top: 8em;
+        }
+
+        .portfolio-item.item-3 {
+            background-color: #141414;
+            top: 10em;
+        }
+
+        .portfolio-item.item-4 {
+            background-color: #191919;
+            top: 12em;
+        }
+
+        .portfolio-item.item-3 img {
+            object-position: center;
+        }
+
+
+        .portfolio-content {
+            width: 50%;
+        }
+
+        .portfolio-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-content p {
+            color: #999;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .portfolio-content .services {
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-image {
+            width: 450px;
+            height: 450px;
+        }
+
+        .portfolio-image img {
+            border-radius: 0.5rem;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-position: left;
+            filter: grayscale(100%);
+            transition: filter 0.4s ease, transform 0.4s ease;
+        }
+
+        .portfolio-image:hover img {
+            filter: grayscale(0);
+            transform: scale(1.02);
+        }
+
+        /* Process (new layout) */
+        .process-card {
+            width: 100%;
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 40px;
+            background-color: #181818;
+            border-radius: 32px;
+            border: 2px solid #292828;
+            padding: 40px;
+        }
+
+        .process-image {
+            width: 45%;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .process-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .process-steps {
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .process-step h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 40px;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+
+        .process-step p {
+            color: #c1c1c1;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .process-step + .process-step {
+            margin-top: 1.75rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 900px) {
+            .process-card {
+                flex-direction: column;
+                padding: 24px;
+                gap: 24px;
+            }
+
+            .process-image,
+            .process-steps {
+                width: 100%;
+            }
+
+            .process-step h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            z-index: 3;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            margin-top: -40px;
+            padding: 3em 1.5rem;
+            position: relative;
+            background-color: #0b0b0b;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .footer-grid {
+            display: flex;
+            margin-bottom: 2.5rem;
+            width: 100%;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        .footer-links a {
+            color: #9b9b9b;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #999;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #292828;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .footer-section > :not(.line) {
+            padding: 0 1rem;
+        }
+
+        .footer-section h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: #666;
+            width: 100%;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom-links a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #fff;
+        }
+
+        @media (min-width: 768px) {
+            footer .logo-icon img {
+                height: 100px;
+            }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .footer-section {
+                max-width: 350px;
+            }
+        }
+
+        .text-divider {
+            color: #9b9b9b;
+            letter-spacing: -.01em;
+            text-transform: uppercase;
+            font-family: Nacelle;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .footer-locations {
+            display: flex;
+            margin-top: 1rem;
+            align-items: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .line {
+            background-color: #292828;
+            width: 100%;
+            height: 2px;
+        }
+
+        /* Cookie modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            max-width: 28rem;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .modal h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            color: #ccc;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal p a {
+            text-decoration: underline;
+        }
+
+        /* Hero (full-screen fixed section) */
+        .section.hero {
+            z-index: 1;
+            background-color: #000;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0;
+            display: flex;
+            position: fixed;
+            inset: 0% 0% auto;
+            overflow: hidden;
+        }
+
+        .container-hero-hp {
+            position: absolute;
+            inset: 0;
+            margin: 0 auto;
+            background-image: linear-gradient(#0b0b0b80, #0000 43%), url("assets/hero_image.jpg");
+            background-position: 0 0, 50%;
+            background-size: auto, cover;
+            background-repeat: no-repeat;
+            will-change: transform;
+            transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+            transform-style: preserve-3d;
+            z-index: 1;
+        }
+
+        .dark-on-scroll {
+            z-index: 99;
+            background-color: #000;
+            opacity: 0;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            inset: 0;
+            will-change: opacity;
+            pointer-events: none;
+        }
+
+        .container-hero-text {
+            z-index: 100;
+            align-items: center;
+            margin: auto;
+            padding: 0 3.25em 1rem;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container-hero-text .row.hero-image {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .container-hero-text h1.heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(6rem, 15vw, 14rem);
+            line-height: 1;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
+        }
+
+        .container-hero-text p {
+            color: #ccc;
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        .button-primary {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            padding: .5rem;
+        }
+
+        .button-inner {
+            position: relative;
+            z-index: 2;
+            background-color: #fff;
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .button-bg {
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            border: 1px solid #fff;
+            opacity: 0.3;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            transform: scale(1.05);
+        }
+
+        .button-primary:hover .button-bg {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+
+        /* Sections wrapper after hero */
+        .sections-wrapper {
+            z-index: 2;
+            background-color: #121212;
+            border-radius: 50px 50px 0 0;
+            margin-top: 90vh;
+            padding-top: 40px;
+            padding-bottom: 64px;
+            position: relative;
+        }
+
+        /* Contact box */
+        #contact .container {
+            border: 2px solid #292828;
+            background-color: #0b0b0b;
+            text-align: center;
+            border-radius: 25px;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 40px;
+        }
+
+        /* Mobile tweaks */
+        @media screen and (max-width: 767px) {
+            .h3{
+                font-size: 40px;
+            }
+            .container {
+                padding: 0;
+            }
+            #work{
+                padding:1rem;
+            }
+            .portfolio-content{
+                width: 100%;
+            }
+            .portfolio-item.item-2 .portfolio-image,
+            .portfolio-item.item-4 .portfolio-image {
+                order: 1;
+                width: 100%;
+                height: 100%;
+            }
+
+            .portfolio-item.item-1 .portfolio-image,
+            .portfolio-item.item-3 .portfolio-image {
+                width: 100%;
+                height: 100%;
+            }
+
+            .footer-section {
+                max-width: unset;
+            }
+
+            .container-hero-text,
+            .dark-on-scroll {
+                padding-left: 1.25em;
+                padding-right: 1.25em;
+            }
+
+            .container-hero-text h1.heading {
+                font-size: clamp(3.5rem, 15vw, 6rem);
+            }
+
+            .container-hero-text p {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .portfolio-item {
+                flex-direction: column;
+                padding: 24px;
+                gap: 1.25rem;
+            }
+
+            .portfolio-content,
+            .portfolio-image {
+                width: 100%;
+                height: auto;
+            }
+
+            .portfolio-content h3 {
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .portfolio-content p {
+                font-size: 0.9rem;
+            }
+
+            /* clamp long description paragraphs, but NOT the 'services' row */
+            .portfolio-content p:not(.services) {
+                display: -webkit-box;
+                -webkit-line-clamp: 4;       /* show ~4 lines */
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<!-- Cookie Modal -->
+<div class="modal-overlay" id="cookieModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeCookieModal()">✕</button>
+        <h2>COOKIES POLICY</h2>
+        <p>
+            We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our
+            traffic. By clicking "Accept", you consent to our use of cookies. Learn more by reading our <a href="#">Privacy
+            Policy</a>
+        </p>
+        <button class="btn" onclick="closeCookieModal()">ACCEPT</button>
+    </div>
+</div>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <img src="assets/uvatime_logo_white.png" alt="Logo">
+            </div>
+        </div>
+        <div class="nav-links">
+            <!-- Shopify & Offers both point to Services section for now -->
+            <a href="#services">Shopify Offers</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#work">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services" onclick="closeMobileMenu()">Shopify</a>
+        <a href="#services" onclick="closeMobileMenu()">Offers</a>
+        <a href="#about" onclick="closeMobileMenu()">About</a>
+        <a href="#services" onclick="closeMobileMenu()">Services</a>
+        <a href="#work" onclick="closeMobileMenu()">Portfolio</a>
+        <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="section hero">
+    <!-- Background image layer -->
+    <div class="container-hero-hp"></div>
+
+    <!-- Dark overlay that appears on scroll -->
+    <div class="dark-on-scroll"></div>
+
+    <!-- Hero text layer -->
+    <div class="container-hero-text">
+        <div class="row hero-image">
+            <h1 class="heading homepage-hero-width">LET'S MAKE IT HAPPEN!</h1>
+            <p class="text-body-2 text-color-dark _20px-padding-bottom paragraph-width-250-m">
+                Building an e-commerce business? Need a new website? We got you!
+            </p>
+            <a href="#about" class="button-primary">
+                <div class="button-inner">
+                    <div class="text-micro-1 button-text-ok">Learn more</div>
+                </div>
+                <div class="button-bg"></div>
+            </a>
+        </div>
+    </div>
+</section>
+<div class="sections-wrapper">
+    <!-- Why Choose Us -->
+    <section id="about">
+        <div class="container">
+            <p class="section-label">About Us</p>
+            <h2 class="section-title">WHY CHOOSE US?</h2>
+            <p class="section-description">
+                Up to you, really! If you're already vibin' with our website, we must be doing something right. Also, it
+                just so happens that every project we touch looks amazingly clean, works like a charm, and yeah, makes
+                some money along the way. We believe that the way you do one thing is the way you do all things. And
+                that says it all!
+            </p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <!--    <section>-->
+    <!--        <div class="container">-->
+    <!--            <p class="section-label">The Team</p>-->
+    <!--            <h2 class="section-title">MEET THE ROCKSTARS</h2>-->
+    <!--            <p class="section-description">-->
+    <!--                The laws of attraction always have a weird way of bringing like-minded people together. We are proud and-->
+    <!--                confident to say that our team simply rocks. Each member has a clear expertise and skillset, and by-->
+    <!--                working together we can guarantee the promise of unrivaled speeds in delivering fast, premium services.-->
+    <!--            </p>-->
+    <!--            <div class="grid grid-4">-->
+    <!--                <div class="card">-->
+    <!--                    <div class="card-image">-->
+    <!--                        <img src="https://ext.same-assets.com/346717325/1619656725.webp" alt="Sebastian Dricu">-->
+    <!--                    </div>-->
+    <!--                    <h3>SEBASTIAN DRICU</h3>-->
+    <!--                    <p class="role">UX & Wireframe Designer</p>-->
+    <!--                    <p>Sebi's the coolest, friendliest guy you'll meet. This is what makes him such a great UX designer:-->
+    <!--                        understanding people. Combine that with his digital talents, and you've got the guarantee of-->
+    <!--                        modern, eye-pleasing design.</p>-->
+    <!--                </div>-->
+    <!--                <div class="card">-->
+    <!--                    <div class="card-image">-->
+    <!--                        <img src="https://ext.same-assets.com/346717325/3202236205.webp" alt="Radu Sioneanu">-->
+    <!--                    </div>-->
+    <!--                    <h3>RADU SIONEANU</h3>-->
+    <!--                    <p class="role">Technical Mastermind</p>-->
+    <!--                    <p>The most beautiful cars in the world are also the fastest. This is why it's Radu's job (also-->
+    <!--                        known as Shonii) to cover every technical detail, making sure all engines are up-and-running.-->
+    <!--                        And that's how you get unmatched performance!</p>-->
+    <!--                </div>-->
+    <!--                <div class="card">-->
+    <!--                    <div class="card-image">-->
+    <!--                        <img src="https://ext.same-assets.com/346717325/1645743236.webp" alt="Andra Lalu">-->
+    <!--                    </div>-->
+    <!--                    <h3>ANDRA LALU</h3>-->
+    <!--                    <p class="role">Content Specialist</p>-->
+    <!--                    <p>Once you get a beautiful canvas and a bullet-proof setup, you're still missing out on the star:-->
+    <!--                        content. This is where Andra comes in, taking text copies at new heights, and making sure that-->
+    <!--                        visuals really do speak 1000 words.</p>-->
+    <!--                </div>-->
+    <!--                <div class="card">-->
+    <!--                    <div class="card-image">-->
+    <!--                        <img src="https://ext.same-assets.com/346717325/1589025057.webp" alt="Radu Neme">-->
+    <!--                    </div>-->
+    <!--                    <h3>RADU NEME</h3>-->
+    <!--                    <p class="role">Founder & Project Manager</p>-->
+    <!--                    <p>A great team needs a great leader, to put all the pieces together. Radu's vision of creating the-->
+    <!--                        most perfectly efficient workflow, without sacrificing product quality, is what the core beliefs-->
+    <!--                        of Coffeehouse are all about.</p>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </section>-->
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <p class="section-label">Our Services</p>
+            <h2 class="section-title">SO HOW CAN WE HELP?</h2>
+            <p class="section-description">
+                Build your business from the ground-up or scale it further than ever before. Have a look at all of our
+                in-house services:
+            </p>
+            <div class="grid grid-3">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/shopify-icon.png" alt="shopify-icon">
+                    </div>
+                    <h3>SHOPIFY DEVELOPMENT</h3>
+                    <p>Made to sell, designed to inspire! Bring your business onboard the Shopify train, take advantage
+                        of the amazing features, and watch your store reach further than ever before. Prices start from
+                        2600€.</p>
+                    <button class="btn">See offers</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div style="width:60px;height:60px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#000"
+                                 stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </div>
+
+                    </div>
+                    <h3>SOFTWARE DEVELOPMENT</h3>
+                    <p>Showcase your solutions and attract the right clients! From custom enterprise apps to modern
+                        SaaS, APIs, and sleek UI/UX—we turn ideas into high-performing digital products. Ready to build
+                        smart and scalable?</p>
+                    <button class="btn">Get in touch</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div style="width:60px;height:60px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#000"
+                                 stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="2" width="14" height="20" rx="3" ry="3"/>
+                                <line x1="12" y1="18" x2="12" y2="18"/>
+                            </svg>
+                        </div>
+
+                    </div>
+                    <h3>MOBILE DEVELOPMENT</h3>
+                    <p>Build mobile experiences that perform, engage, and scale! From native iOS & Android to
+                        cross-platform and PWAs, we design, develop, optimize, and support apps that users love. Launch
+                        faster, grow smarter.</p>
+                    <button class="btn">Get in touch</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="work">
+        <div class="container">
+            <p class="section-label">Portfolio</p>
+            <h2 class="section-title">OUR WORK SPEAKS FOR ITSELF</h2>
+            <p class="section-description">
+                Helping brands become amazing is what we do. And we like to keep doing it. Have a look at some of our
+                rockstar clients and the work we are performing for them.
+            </p>
+
+            <div class="portfolio-item item-1">
+                <div class="portfolio-content">
+                    <h3>LUMINSKIN</h3>
+                    <p>Lumin Skin is a global men’s skincare brand trusted in over 60 countries. We were brought in to
+                        transition their aging Next.js storefront to a fully optimized Shopify Plus ecosystem. Our team
+                        rebuilt the entire infrastructure — designing a custom Shopify theme, developing bespoke apps
+                        for subscriptions and loyalty, and implementing advanced checkout extensions tailored to their
+                        business model. We engineered a scalable foundation for international sales, optimized
+                        performance, and elevated the user experience to reflect the premium nature of the brand.</p>
+                    <p class="services">Our Services: Shopify Development</p>
+                    <a href="https://luminskin.com" class="btn">Check it out!</a>
+                </div>
+                <div class="portfolio-image">
+                    <img src="/assets/shopify_luminskin.png" alt="Shopify Luminskin">
+                </div>
+            </div>
+
+            <div class="portfolio-item item-2">
+                <div class="portfolio-image">
+                    <img src="assets/shopify_meridiangrooming.png" alt="Meridiangrooming">
+                </div>
+                <div class="portfolio-content item-2">
+                    <h3>MERIDIANGROOMING</h3>
+                    <p>Meridian Grooming is a fast-growing men’s personal care brand with a strong DTC presence across
+                        the US, Canada, and Europe. We were trusted to migrate their legacy storefront to a fully
+                        optimized Shopify Plus stack, building a custom theme, subscription logic, and post-purchase
+                        upsell flows tailored to the grooming industry. We developed custom Shopify apps, integrated
+                        Loop Subscriptions, Klaviyo, and Recharge, and engineered checkout extensions with age
+                        validation, warranty add-ons, and AOV-boosting bundles. The result: a high-conversion, scalable
+                        storefront built for performance, seamless user experience, and global expansion.</p>
+                    <p class="services">Our Services: Shopify Development</p>
+                    <a href="https://meridiangrooming.com" class="btn">Check it out!</a>
+                </div>
+            </div>
+
+            <div class="portfolio-item item-3">
+                <div class="portfolio-content">
+                    <h3>COUNTER CULTUREs</h3>
+                    <p>Counter Culture Store is a UK-based clean beauty marketplace featuring ethically sourced, indie
+                        skincare brands. We redesigned their Shopify theme from the ground up, focusing on a cleaner
+                        layout, improved product discovery, and a smoother mobile shopping experience. We built custom
+                        sections for curated collections, brand storytelling, and ingredient-focused product pages. We
+                        enhanced SEO performance, improved accessibility compliance, and optimized page speed to support
+                        growth and increase visibility in organic search. The result: a modern, high-converting
+                        storefront that aligns with the brand’s mission of conscious beauty.</p>
+                    <p class="services">Our Services: Shopify Development</p>
+                    <a href="https://counterculturestore.co.uk" class="btn">Check it out!</a>
+                </div>
+                <div class="portfolio-image">
+                    <img src="/assets/shopify_counter_culture_store.png" alt="Counter Culture Store">
+                </div>
+            </div>
+
+            <div class="portfolio-item item-4">
+                <div class="portfolio-image">
+                    <img src="assets/shopify_mondaine_watches.png" alt="Mondaine Watches">
+                </div>
+                <div class="portfolio-content">
+                    <h3>MONDAINE WATCHES</h3>
+                    <p>Mondaine is an iconic Swiss watchmaker known for its timeless design, railway clock heritage, and
+                        precision craftsmanship. We helped elevate their digital presence by optimizing their Shopify
+                        storefront with a refined, minimalist design that reflects the brand’s premium identity. We
+                        enhanced product storytelling with custom sections for watch collections, materials, and
+                        heritage, while improving performance, accessibility, and mobile experience. With SEO structure,
+                        metafield-driven content, and conversion-focused UX updates, the store now delivers a more
+                        elegant, faster, and engaging shopping experience worthy of the Mondaine name.
+                    </p>
+                    <p class="services">Our Services: Branding, Website Development, Shopify Development</p>
+                    <a href="https://mondaine.com" class="btn">Check it out!</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <!-- Process Section -->
+    <section id="process">
+        <div class="container">
+            <p class="section-label">The Process</p>
+            <h2 class="section-title">LET'S KEEP IT SIMPLE</h2>
+            <p class="section-description">
+                From start to finish, our work process is as simple as they come. But the journey is always magic!
+            </p>
+
+            <div class="process-card">
+                <!-- Left: Image -->
+                <div class="process-image">
+                    <img src="/assets/process.jpg" alt="Process">
+                </div>
+
+                <!-- Right: Steps -->
+                <div class="process-steps">
+                    <div class="process-step">
+                        <h3>01. YOU GET IN TOUCH, WE GET A LOOK</h3>
+                        <p>
+                            First of all, let's meet! We choose our clients carefully, both as a person and as a brand.
+                            You probably don't trust us yet, and that needs to be fixed! Anything regarding this
+                            flirting
+                            stage is on the house, of course! Just don't waste our time!
+                        </p>
+                    </div>
+
+                    <div class="process-step">
+                        <h3>02. WE MAKE THE PLAN, YOU PAY THE MONEY</h3>
+                        <p>
+                            Once we are all onboard, we start planning. We'll need your involvement, but it won't take
+                            long.
+                            For the project planning phase, we take a 20% non-refundable retainer, and once everything
+                            is
+                            approved, we only accept upfront payments.
+                        </p>
+                    </div>
+
+                    <div class="process-step">
+                        <h3>03. WE GET IT DONE, YOU MAKE THE MONEY</h3>
+                        <p>
+                            Now we get the work you paid for done, with a clear promise of a deadline. We make sure
+                            everything is perfect before we deliver it to you, we talk about any future services you
+                            might
+                            need, and then you can go on scaling your business.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact CTA -->
+    <section id="contact">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">WANT TO GET IN TOUCH?</h2>
+            <p class="section-description">
+                If you're already sold on working with us, just tap the button below and complete our contact form. We
+                will get back to you in no time!
+            </p>
+            <a href="mailto:office@uvatime.com" class="btn">Get in touch</a>
+        </div>
+    </section>
+</div>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom: 4rem;">
+                    <div class="logo-icon">
+                        <img src="assets/uvatime_logo_white.png" alt="Logo">
+                    </div>
+
+                </div>
+                <div class="footer-links">
+                    <a href="#about">About </a>
+                    <div class="text-divider" bis_skin_checked="1">/</div>
+                    <a href="#services">Services</a>
+                    <div class="text-divider" bis_skin_checked="1">/</div>
+                    <a href="#work">Portfolio</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4 style="padding-top:1rem;">Get in touch</h4>
+                <a href="emailto:office@uvatime.com" style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff;">office@uvatime.com</a>
+                <a href="tel:+40752883350" style="padding-bottom: 1rem">+40752883350</a>
+                <div class="line" bis_skin_checked="1"></div>
+                <div class="footer-locations">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/>
+                        <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                    Brasov, Romania
+                </div>
+
+                <div class="footer-locations" style="padding-bottom: 1rem;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/>
+                        <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                    Jackson, Wyoming, USA
+                </div>
+
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Copyright UVATIME S.R.L.</p>
+            <div class="footer-bottom-links">
+                <a href="/terms-and-conditions">Terms & Conditions</a>
+                <a href="/privacy-folder">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    // Show cookie modal after 1 second
+    setTimeout(() => {
+        document.getElementById('cookieModal').classList.add('active');
+    }, 1000);
+
+    function closeCookieModal() {
+        document.getElementById('cookieModal').classList.remove('active');
+    }
+
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('active');
+    }
+
+    function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.remove('active');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const menu = document.getElementById('mobileMenu');
+        const hamburger = document.querySelector('.hamburger');
+        if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+            menu.classList.remove('active');
+        }
+    });
+
+    // Hide / show nav on scroll
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const currentY = window.scrollY;
+        const threshold = 80; // how much to scroll before nav can hide
+
+        // Don't hide nav while mobile menu is open
+        if (mobileMenu.classList.contains('active')) {
+            nav.classList.remove('nav-hidden');
+            lastScrollY = currentY;
+            return;
+        }
+
+        if (currentY > threshold && currentY > lastScrollY) {
+            // scrolling down
+            nav.classList.add('nav-hidden');
+        } else {
+            // scrolling up or near top
+            nav.classList.remove('nav-hidden');
+        }
+
+        lastScrollY = currentY;
+    });
+
+    (function () {
+        const bg = document.querySelector('.container-hero-hp');
+        const overlay = document.querySelector('.dark-on-scroll');
+        const heroText = document.querySelector('.container-hero-text');
+
+        if (!bg || !overlay || !heroText) return;
+
+        const baseScale = 1;      // starting scale
+        const maxScale = 1.1;     // how much to zoom as you scroll
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const vh = window.innerHeight || 1;
+            const progress = Math.min(scrollY / vh, 1); // 0 → 1 over first viewport
+
+            // Parallax + scale for background
+            const translateY = scrollY * 0.25; // slower than scroll
+            const scale = baseScale + (maxScale - baseScale) * progress;
+
+            bg.style.transform =
+                `translate3d(0, 0, 0) ` +
+                `scale3d(${scale}, ${scale}, 1) ` +
+                `rotateX(0deg) rotateY(0deg) rotateZ(0deg) ` +
+                `skew(0deg, 0deg)`;
+            // ^ keeps the full transform chain you wanted
+
+            // Dark overlay fade in
+            overlay.style.opacity = (progress * 0.85).toFixed(2);
+
+            // Fade + lift text slightly
+            const textOpacity = 1 - progress * 0.7;
+            const textTranslate = progress * -20; // move up a bit
+            heroText.style.opacity = textOpacity;
+            heroText.style.transform = `translate3d(0, ${textTranslate}px, 0)`;
+        });
+    })();
+
+</script>
+</body>
+</html>
