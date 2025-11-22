@@ -1,0 +1,2993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVATIME | Shopify Development</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:wght@400;700&family=Roboto+Condensed:wght@400;500;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        /* ====== BASE STYLES (from your index page) ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'PT Sans', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .font-bebas {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+            font-family: "Roboto Condensed", sans-serif;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        nav.nav-hidden {
+            transform: translate3d(0, -100%, 0);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon img {
+            height: 30px;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            transition: color 0.2s ease, opacity 0.2s ease;
+            opacity: 0.85;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+            opacity: 1;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+            cursor: pointer;
+        }
+
+        .hamburger-line {
+            width: 1.5rem;
+            height: 2px;
+            background-color: #fff;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            padding: 0 1.5rem 1rem;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+        }
+
+        @media (min-width: 768px) {
+            .logo-icon img {
+                height: 65px;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .hamburger {
+                display: none;
+            }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: 2px solid;
+            cursor: pointer;
+            font-family: "Roboto Condensed", sans-serif;
+            letter-spacing: -.01em;
+        }
+
+        .btn:hover {
+            color: #fff;
+            background-color: transparent;
+        }
+
+        /* Generic section layout */
+        section {
+            padding: 2.5rem 1.5rem;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 0.875rem;
+            font-family: "Roboto Condensed", sans-serif;
+            color: #9b9b9b;
+            font-weight: 400;
+            border: 1px solid #292828;
+            background-color: #121212;
+            border-radius: 100em;
+            margin-bottom: 40px;
+            padding: 10px 15px 8px;
+            display: inline-flex;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.625rem);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .section-description {
+            color: #999;
+            text-align: center;
+            max-width: 31rem;
+            margin: 0 auto 1rem;
+            line-height: 1.8;
+            font-family: "Roboto Condensed", sans-serif;
+            letter-spacing: -.01em;
+        }
+
+        /* Grid helper */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Pricing cards */
+        .pricing-card {
+            border-radius: 25px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            border: 2px solid #292828;
+            background-color: #181818;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .pricing-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-subtitle {
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 0.9rem;
+            color: #bdbdbd;
+            margin-bottom: .5rem;
+            line-height: 1.7;
+        }
+
+        .price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 80px;
+        }
+
+        .pricing-divider {
+            width: 100%;
+            height: 1px;
+            background-color: #292828;
+            margin: 1.25rem 0 1.5rem;
+        }
+
+        .pricing-card ul {
+            margin: 0 0 2rem;
+            list-style: none;
+            padding: 0;
+        }
+
+
+        .pricing-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+
+        .pricing-card:hover {
+            background-color: #111;
+            transform: translateY(-2px);
+        }
+
+        .pricing-tag {
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: #bbb;
+            margin-bottom: 0.5rem;
+            letter-spacing: -.01em;
+        }
+
+
+        .price span {
+            font-family: "Roboto Condensed", sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            margin-left: 0.25rem;
+            color: #aaa;
+        }
+
+        .pricing-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 400;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0 1.5rem;
+        }
+
+        .pricing-card ul li {
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: #9b9b9b;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border-radius: 999px;
+            border: 1px solid #444;
+            padding: 0.1rem 0.7rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #ddd;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Features list */
+        .features-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .features-list-item {
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+            border: 1px solid #232323;
+            background-color: #101010;
+            font-size: 0.9rem;
+            color: #d1d1d1;
+        }
+
+        .features-list-item strong {
+            display: block;
+            font-family: "Roboto Condensed", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.75rem;
+            color: #9b9b9b;
+            margin-bottom: 0.35rem;
+        }
+
+        @media (min-width: 768px) {
+            .features-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* Add-ons */
+        .addons-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 900px) {
+            .addons-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        .addon-card {
+            border-radius: 20px;
+            border: 1px solid #232323;
+            background-color: #101010;
+            padding: 1.75rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .addon-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+        }
+
+        .addon-price {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #aaa;
+        }
+
+        .addon-card p {
+            font-size: 0.9rem;
+            color: #c4c4c4;
+        }
+
+        /* Portfolio (same as your index style) */
+        .portfolio-item {
+            border: 2px solid #292828;
+            background-color: #0b0b0b;
+            border-radius: 25px;
+            margin-bottom: 2em;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            grid-column-gap: 4em;
+            grid-row-gap: 4em;
+            position: sticky;
+            top: 6em;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-item.item-2 {
+            background-color: #101010;
+            top: 8em;
+        }
+
+        .portfolio-item.item-3 {
+            background-color: #141414;
+            top: 10em;
+        }
+
+        .portfolio-item.item-4 {
+            background-color: #191919;
+            top: 12em;
+        }
+
+        .portfolio-content {
+            width: 50%;
+        }
+
+        .portfolio-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-content p {
+            color: #999;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .portfolio-content .services {
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-image {
+            width: 450px;
+            height: 450px;
+        }
+
+        .portfolio-image img {
+            border-radius: 0.5rem;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-position: left;
+            filter: grayscale(100%);
+            transition: filter 0.4s ease, transform 0.4s ease;
+        }
+
+        .portfolio-image:hover img {
+            filter: grayscale(0);
+            transform: scale(1.02);
+        }
+
+        /* Process */
+        .process-card {
+            width: 100%;
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 40px;
+            background-color: #0b0b0b;
+            border-radius: 32px;
+            border: 2px solid #292828;
+            padding: 40px;
+        }
+
+        .process-image {
+            width: 45%;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .process-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .process-steps {
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .process-step h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 40px;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+
+        .process-step p {
+            color: #c1c1c1;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .process-step + .process-step {
+            margin-top: 1.75rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid #333;
+        }
+
+        /* Footer (your footer styles) */
+        footer {
+            z-index: 3;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            margin-top: -40px;
+            padding: 3em 1.5rem;
+            position: relative;
+            background-color: #0b0b0b;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .footer-grid {
+            display: flex;
+            margin-bottom: 2.5rem;
+            width: 100%;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        .footer-links a {
+            color: #9b9b9b;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #999;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #292828;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .footer-section > :not(.line) {
+            padding: 0 1rem;
+        }
+
+        .footer-section h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: #666;
+            width: 100%;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom-links a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #fff;
+        }
+
+        .text-divider {
+            color: #9b9b9b;
+            letter-spacing: -.01em;
+            text-transform: uppercase;
+            font-family: Nacelle;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .footer-locations {
+            display: flex;
+            margin-top: 1rem;
+            align-items: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .line {
+            background-color: #292828;
+            width: 100%;
+            height: 2px;
+        }
+
+        @media (min-width: 768px) {
+            footer .logo-icon img {
+                height: 100px;
+            }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .footer-section {
+                max-width: 350px;
+            }
+        }
+
+        /* Hero for this page */
+        .section.hero {
+            z-index: 1;
+            background-color: #000;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0;
+            display: flex;
+            position: fixed;
+            inset: 0% 0% auto;
+            overflow: hidden;
+        }
+
+        .container-hero-hp {
+            position: absolute;
+            inset: 0;
+            margin: 0 auto;
+            background-image: linear-gradient(#0b0b0b80, #0000 43%), url("/assets/hero_image.jpg");
+            background-position: 0 0, 50%;
+            background-size: auto, cover;
+            background-repeat: no-repeat;
+            will-change: transform;
+            transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+            transform-style: preserve-3d;
+            z-index: 1;
+        }
+
+        .dark-on-scroll {
+            z-index: 99;
+            background-color: #000;
+            opacity: 0;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            inset: 0;
+            will-change: opacity;
+            pointer-events: none;
+        }
+
+        .container-hero-text {
+            z-index: 100;
+            align-items: center;
+            margin: auto;
+            padding: 0 3.25em 1rem;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container-hero-text .row.hero-image {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .container-hero-text h1.heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4.5rem, 13vw, 7.5rem);
+            line-height: 1;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
+            font-weight: 400;
+        }
+
+        .container-hero-text p {
+            color: #ccc;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subnav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-family: "Roboto Condensed", sans-serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+        }
+
+        .hero-subnav a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid #333;
+            opacity: 0.9;
+        }
+
+        .hero-subnav a:hover {
+            opacity: 1;
+            border-color: #fff;
+        }
+
+        .button-primary {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            padding: .5rem;
+        }
+
+        .button-inner {
+            position: relative;
+            z-index: 2;
+            background-color: #fff;
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .button-bg {
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            border: 1px solid #fff;
+            opacity: 0.3;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            transform: scale(1.05);
+        }
+
+        .button-primary:hover .button-bg {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+
+        /* Wrapper after hero */
+        .sections-wrapper {
+            z-index: 2;
+            background-color: #121212;
+            border-radius: 50px 50px 0 0;
+            margin-top: 90vh;
+            padding-top: 40px;
+            padding-bottom: 64px;
+            position: relative;
+        }
+
+        .portfolio-item.item-3 .portfolio-image img {
+            object-position: center;
+        }
+
+        /* Mobile tweaks */
+        @media screen and (max-width: 767px) {
+            .container {
+                padding: 0;
+            }
+
+            .portfolio-item {
+                flex-direction: column;
+                padding: 24px;
+                gap: 1.25rem;
+                position: static;
+            }
+
+            .portfolio-content,
+            .portfolio-image {
+                width: 100%;
+                height: auto;
+            }
+
+            .portfolio-content h3 {
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .portfolio-content p {
+                font-size: 0.9rem;
+            }
+
+            .portfolio-content p:not(.services) {
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .container-hero-text,
+            .dark-on-scroll {
+                padding-left: 1.25em;
+                padding-right: 1.25em;
+            }
+
+            .container-hero-text h1.heading {
+                font-size: clamp(3.5rem, 15vw, 6rem);
+            }
+
+            .container-hero-text p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .process-card {
+                flex-direction: column;
+                padding: 24px;
+                gap: 24px;
+            }
+
+            .process-image,
+            .process-steps {
+                width: 100%;
+            }
+
+            .process-step h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        .reduce-width-desktop {
+            max-width: 350px;
+        }
+
+        .pricing-feature-icon {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            color: white;
+        }
+
+        .slider-main_component {
+            color: #fff;
+            padding: 3rem 2.5rem 0rem;
+            width: 1240px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: visible;
+        }
+
+        /* swiper container bottom spacing */
+        .swiper.is-slider-main {
+            padding-bottom: 2.5rem;
+        }
+
+        /* slides row */
+        .swiper-wrapper.is-slider-main {
+            display: flex;
+        }
+
+        .swiper-slide.is-slider-main {
+            width: auto; /* important with slidesPerView: 'auto' */
+        }
+
+        /* card */
+        .small_slider_card {
+            background: #181818;;
+            border-radius: 20px;
+            border: 1px solid #292828;
+            padding: 20px;
+            min-width: 260px;
+            max-width: 295px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 300px;
+        }
+
+        /* icon bubble */
+        .icon-box-lp {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .icon-box-lp img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            max-width: 100%;
+        }
+
+        .icon-emoji {
+            font-size: 20px;
+        }
+
+        /* title + text like modal */
+        .modal-title {
+            color: #fff;
+            text-align: left;
+            letter-spacing: 0;
+            padding-bottom: 10px;
+            font-size: 30px;
+            line-height: 1.1;
+            position: relative;
+            text-decoration: none;
+            font-family: Bebas Neue, sans-serif;
+            font-weight: 400;
+        }
+
+        .text-body-3 {
+            letter-spacing: -.01em;
+            font-size: 16px;
+            line-height: 1.3;
+            font-weight: 400;
+            color: #9b9b9b;
+            font-family: "Roboto Condensed", sans-serif;
+        "
+        }
+
+        .reduce-width {
+            max-width: 240px;
+        }
+
+        /* Learn more footer */
+        .modal-icon-button {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+        }
+
+        .modal-icon-small {
+            width: 16px;
+            height: 16px;
+            border-radius: 999px;
+            border: 1px solid #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .text-micro-1.button-modal {
+            font-size: 0.75rem;
+            font-family: "Roboto Condensed", sans-serif;
+            background-color: transparent;
+        }
+
+        /* bottom: scrollbar + buttons */
+        .slider-main_bottom-wrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+            gap: 1.5rem;
+        }
+
+        /* scrollbar track */
+        .swiper-drag-wrapper.is-slider-main {
+            flex: 1;
+            height: 2px;
+            background: #333;
+            border-radius: 999px;
+            position: relative;
+        }
+
+        /* scrollbar thumb */
+        .swiper-drag.is-slider-main {
+            height: 2px;
+            background: #fff;
+            border-radius: 999px;
+        }
+
+        /* buttons group */
+        .slider-main_button-wrapper {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .slider-main_button {
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            border: 1px solid #fff;
+            background: transparent;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+        }
+
+        .slider-main_button:hover {
+            background: #222;
+            transform: translateY(-1px);
+        }
+
+        .slider-main_button[aria-disabled="true"] {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .slider-main_button-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* flip left arrow */
+        .slider-main_button-icon.is-reversed {
+            transform: scaleX(-1);
+        }
+
+        /* scroll area & mouse drag cursor */
+        .swiper.is-slider-main .swiper-wrapper {
+            cursor: grab;
+        }
+
+        .swiper.is-slider-main.grabbing .swiper-wrapper {
+            cursor: grabbing;
+        }
+
+        /* scrollbar style for browser */
+        .swiper.is-slider-main .swiper-scrollbar-horizontal {
+            height: 0; /* handled visually by .swiper-drag-wrapper above */
+        }
+
+        @media (max-width: 768px) {
+            .slider-main_component {
+                padding-inline: 1.5rem;
+            }
+        }
+
+        /* Overlay */
+        .feature-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+
+        /* when open */
+        .feature-modal-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Modal panel */
+        .feature-modal {
+            position: relative;
+            width: 700px;
+            max-width: 90%;
+            background: #181818;
+            color: #fff;
+            border-radius: 24px;
+            padding: 5rem 5rem 5rem;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+            font-family: inherit;
+        }
+
+        /* "Included Features" pill */
+        .feature-modal-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.3rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid #444;
+            font-size: 0.7rem;
+            margin-bottom: 1.25rem;
+            color: #9b9b9b;
+            text-transform: capitalize;
+            font-family: "Roboto Condensed", sans-serif;
+            font-weight: 400;
+        }
+
+        /* Title */
+        .feature-modal-title {
+            color: #fff;
+            text-align: left;
+            letter-spacing: 0;
+            padding-bottom: 20px;
+            font-size: 40px;
+            line-height: 1.1;
+            position: relative;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Body text */
+        .feature-modal-body {
+            font-size: 1rem;
+            line-height: 20px;
+            color: #f5f5f5;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        .feature-modal-body p {
+            margin: 0 0 1rem;
+        }
+
+        /* Back button */
+        .feature-modal-back {
+            background-color: white;
+            color: #121212;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            width: 175px;
+            padding: 12px 25px;
+            font-family: "Roboto Condensed", sans-serif;
+            font-weight: 400;
+            line-height: 20px;
+            transition: all .2s;
+            text-align: center;
+            text-transform: none;
+            cursor: pointer;
+            margin-top: 15px
+        }
+
+        .feature-modal-back:hover {
+            color: white;
+            background-color: #0000;
+        }
+
+        /* Disable body scroll when modal open */
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        @media (max-width: 600px) {
+            .feature-modal {
+                padding: 2rem 1.5rem 1.75rem;
+            }
+
+            .feature-modal-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        .close-modal-button {
+            z-index: 999;
+            background-color: white;
+            opacity: 1;
+            cursor: pointer;
+            border-radius: 500px;
+            align-items: stretch;
+            margin-top: 20px;
+            margin-left: 12px;
+            margin-right: 20px;
+            padding: 10px;
+            display: block;
+            position: absolute;
+            inset: 0% 0% auto auto;
+            box-shadow: 1px 1px 12px #0000001a;
+        }
+
+        .close-modal-button:hover {
+            transform: rotate(360deg);
+            opacity: 0.9;
+        }
+
+        .fs-cc-banner_close-icon-2 {
+            color: black;
+            width: 24px;
+            height: 24px;
+        }
+
+        .close-modal-button svg {
+            width: 24px;
+            height: 24px;
+            color: #000;
+            transition: transform 0.3s ease;
+        }
+
+        .close-modal-button .fs-cc-banner_close-icon-2 {
+            transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-180deg) skew(0deg, 0deg);
+            transform-style: preserve-3d;
+            transition: transform 0.35s ease; /* smooth wheel spin */
+        }
+
+        .close-modal-button:hover .fs-cc-banner_close-icon-2 {
+            transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(180deg) /* ONLY this angle changes */ skew(0deg, 0deg);
+        }
+
+        .slider-main_link {
+            color: white;
+            text-decoration: none;
+        }
+
+        #features {
+            overflow: hidden;
+        }
+
+        .swiper.is-slider-main {
+            overflow: visible;
+        }
+
+        /* Layout wrapper – keep if you want, or use your own container */
+        .faq-section {
+            color: #fff;
+            padding: 0rem 1.5rem 0rem;
+        }
+
+        .faq-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* List */
+        .faq-list {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        /* Each FAQ card */
+        .faq-item {
+            background: #171717;
+            padding: 1.1rem 1.8rem;
+            transition: border-radius 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            border-radius: 32px;
+            border: 2px solid #292828;
+        }
+
+        /* When open, card becomes more “rectangle” but still rounded */
+        .faq-item.is-open {
+            border-radius: 32px;
+            background: #1c1c1c;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Button row (question) */
+        .faq-trigger {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            cursor: pointer;
+            text-align: left;
+            padding: 0; /* padding is on .faq-item */
+        }
+
+        .faq-left {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        /* ? icon */
+        .faq-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 999px;
+            border: 1px solid #fff;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Question text */
+        .faq-question {
+            font-size: 1rem;
+            font-family: "Roboto Condensed", sans-serif;
+            letter-spacing: 0;
+            font-weight: 400;
+        }
+
+        /* Chevron */
+        .faq-chevron {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+
+        .faq-chevron svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Answer panel */
+        .faq-panel {
+            max-height: 0;
+            overflow: hidden;
+            padding-top: 0;
+            margin-top: 0;
+            transition: max-height 0.35s ease, padding-top 0.35s ease;
+        }
+
+        /* Answer text */
+        .faq-panel p {
+            font-size: 1rem;
+            color: #9b9b9b;
+            margin: 0 0 1rem;
+            letter-spacing: -.01em;
+            line-height: 1.3;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+
+        /* OPEN STATE – this is the animation “target” */
+        .faq-item.is-open .faq-panel {
+            max-height: 700px; /* big enough for long answers */
+            padding-top: 0.85rem;
+            margin-top: 0.35rem;
+        }
+
+        /* Rotate chevron when open */
+        .faq-item.is-open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Hover effect on closed items (optional, subtle) */
+        .faq-item:not(.is-open):hover {
+            background: #1c1c1c;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Mobile tweaks */
+        @media (max-width: 600px) {
+            .faq-item {
+                padding-inline: 1.4rem;
+            }
+
+            .faq-question {
+                font-size: 0.85rem;
+            }
+        }
+
+        .contact-wrapper {
+            border: 2px solid #292828;
+            background-color: #0b0b0b;
+            text-align: center;
+            border-radius: 25px;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 40px;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation (kept from your layout) -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <img src="/assets/uvatime_logo_white.png" alt="Logo">
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#prices">Prices</a>
+            <a href="#features">Features</a>
+            <a href="#work">Portfolio</a>
+            <a href="/">Homepage</a>
+        </div>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#prices" onclick="closeMobileMenu()">Prices</a>
+        <a href="#features" onclick="closeMobileMenu()">Features</a>
+        <a href="#work" onclick="closeMobileMenu()">Portfolio</a>
+        <a href="/" onclick="closeMobileMenu()">Homepage</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="section hero">
+    <div class="container-hero-hp"></div>
+    <div class="dark-on-scroll"></div>
+
+    <div class="container-hero-text">
+        <div class="row hero-image">
+            <h1 class="heading">build your e-comm empire</h1>
+            <p class="section-description">
+                Start your journey to e-commerce dominance and transform your store into a stunning, high-performance
+                Shopify sales machine.
+            </p>
+
+            <div class="hero-subnav">
+                <a href="#prices">Packages</a>
+                <a href="#features">What’s included</a>
+                <a href="#work">Live work</a>
+            </div>
+
+            <a href="#prices" class="button-primary">
+                <div class="button-inner">
+                    See offers
+                </div>
+                <div class="button-bg"></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="sections-wrapper">
+    <!-- PRICES / PACKAGES -->
+    <section id="prices">
+        <div class="container">
+            <p class="section-label">Introduction</p>
+            <h2 class="section-title">WHY CHOOSE SHOPIFY?</h2>
+            <p class="section-description">Want a stunning online store that’s
+                a breeze to run? Shopify's ease of use, stunning design options, powerful marketing tools, and
+                rock-solid security make it the perfect platform to launch or elevate your e-commerce business. <br><br>With
+                over 6 years of experience, our expert team will handle all the setups and customizations, so you can
+                focus on building your brand and growing sales. Let's start your Uvatime x Shopify experience!</p>
+            <p class="section-label">Services Pricing</p>
+            <h2 class="section-title">Our offers</h2>
+            <p class="section-description reduce-width-desktop">We've got pricing options to fuel your growth, whether
+                you're a scrappy
+                startup or a scaling powerhouse store.</p>
+
+            <div class="grid grid-3">
+                <!-- SHOPIFY FASTRACK -->
+                <div class="pricing-card">
+                    <h3 class="pricing-title">SHOPIFY FASTRACK</h3>
+                    <p class="pricing-subtitle">
+                        Choose from 6 premium store models. Complete shop delivery in 2 weeks.
+                    </p>
+
+                    <div class="price">2.600€</div>
+
+                    <div class="pricing-divider"></div>
+
+                    <ul>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Blazing-fast loading pages.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Premium Shopify theme included.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Modern UX, conversions focused.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Smart built-in cross-selling sections.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            No risks! See it before you buy it!
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Free listing for up to 30 products.
+                        </li>
+                    </ul>
+
+                    <button class="btn pricing-btn" onclick="location.href='#contact'">
+                        Book your call!
+                    </button>
+                </div>
+
+                <!-- SHOPIFY ENHANCED -->
+                <div class="pricing-card">
+                    <h3 class="pricing-title">SHOPIFY ENHANCED</h3>
+                    <p class="pricing-subtitle">
+                        Make it unique! Fastrack, with a tailored touch.
+                        Complete shop delivery in 3 weeks.
+                    </p>
+
+                    <div class="price">3.600€</div>
+
+                    <div class="pricing-divider"></div>
+
+                    <ul>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Everything in Fastrack plan.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Up to 5 extra custom store sections.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Tailored sections to match your brand.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Product storytelling sections included.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Solid setup, easy to scale in the future.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Free listing for up to 60 products.
+                        </li>
+                    </ul>
+
+                    <button class="btn pricing-btn" onclick="location.href='#contact'">
+                        Book your call!
+                    </button>
+                </div>
+
+                <!-- SHOPIFY BESPOKE -->
+                <div class="pricing-card">
+                    <h3 class="pricing-title">SHOPIFY BESPOKE</h3>
+                    <p class="pricing-subtitle">
+                        Our signature, custom store-building experience.
+                        Complete shop delivery in 6 weeks.
+                    </p>
+
+                    <div class="price">6.600€</div>
+
+                    <div class="pricing-divider"></div>
+
+                    <ul>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Everything in Fastrack &amp; Enhanced.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Convenient 20%+80% payment plan.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Custom design concept approval phase.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Brand and business model analysis.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Niche leaders &amp; competitors research.
+                        </li>
+                        <li>
+                            <div class="pricing-feature-icon w-embed">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     aria-hidden="true" role="img" class="iconify iconify--ic" width="100%"
+                                     height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path>
+                                </svg>
+                            </div>
+                            Free listing for up to 100 products.
+                        </li>
+                    </ul>
+
+                    <button class="btn pricing-btn" onclick="location.href='#contact'">
+                        Book your call!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- INCLUDED FEATURES -->
+    <section id="features">
+        <div class="container">
+            <p class="section-label">Included features
+            </p>
+            <h2 class="section-title">included in every plan
+            </h2>
+            <p class="section-description">
+                Your new Shopify store will rock all these killer features and power tools that turn browsers into
+                buyers, with a seamless design and functionality.
+            </p>
+
+            <!-- Swiper CSS -->
+            <link
+                    rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+            />
+
+            <div class="slider-main_component">
+                <div class="swiper is-slider-main">
+                    <div class="swiper-wrapper is-slider-main">
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div
+                                        class="small_slider_card"
+                                        data-modal-title="IN-DEPTH ONBOARDING"
+                                        data-modal-body="
+We dive deep to understand your business and your vision. No cookie-cutter strategies here, just a tailored roadmap for Shopify success. We’re not afraid to ask the tough questions. Through an in-depth discovery call and our killer onboarding form, we’ll uncover everything from your target audience to that unique spark that sets your brand apart.
+
+Think of this as the foundation for a store that gets you and your needs, not just another generic shop window. This ain’t just about ticking boxes. Our discovery process is designed to reveal the opportunities you might have missed. We’ll map out pain points, streamline your operations, and unlock the potential of Shopify to make your business unstoppable.
+
+No more half-baked questionnaires. Our discovery process is your blueprint for a Shopify store that fuels your vision – intuitive, insightful, and designed to get to the heart of your e-commerce ambitions.
+      "
+                                >
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/mic.png">
+                                        </div>
+                                        <h3 class="modal-title">In-Depth Onboarding</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            One discovery call and a sleek onboarding form is all it takes to cover
+                                            everything we need to know.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 1. Theme & Layout -->
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Premium Theme Research"
+                                     data-modal-body="Generic themes are for the birds. We don't wing it with design – we'll handpick the perfect premium Shopify theme for your brand.  Based on your in-depth discovery, we'll recommend a theme that not only looks perfect but also packs the power tools you need to conquer your niche.
+‍
+Forget endless browsing for the one. We know the best themes inside and out, saving you time and headaches. Whether you need a lean, mean conversion machine or a visual feast with all the bells and whistles, we've got your back.
+                                ‍
+                                Think of us as your expert theme scouts. We'll uncover hidden gems and steer you towards the perfect fit for your vision. Get ready for a store that turns heads and opens wallets.
+                                ‍
+                                Oh, forgot to mention… the theme’s cost is, sadly, on you! But at least you’ll buy it with a happy face.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/look.png">
+                                        </div>
+                                        <h3 class="modal-title">Premium Theme Research</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            We'll handpick the perfect premium Shopify theme for your brand from our
+                                            list of
+                                            favorite, high-performance themes.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Navigation & Filters -->
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Menu & Filters Structure"
+                                     data-modal-body="Navigation that rocks! We'll craft a menu and filter structure that's intuitive for shoppers and search engines alike. Forget confusing menus and hidden gems – we'll make your products easy to find, boosting sales and SEO juice.
+
+Don't underestimate the power of organization. We'll analyze your current product catalog and translate it into a Shopify masterpiece. No more clunky structures and confusing menu items, we'll create a user-friendly experience that actually help visitors find what they are looking for.
+
+Think clear categories, easy-to-use, intuitive filters, and a search bar that actually helps. We'll build a menu and filter system that's a dream for both shoppers and search algorithms.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/menu.png">
+                                        </div>
+                                        <h3 class="modal-title">Menus & Filters</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Perfect menus &amp; filters! We'll make it easy for shoppers (and search
+                                            engines) to find your products.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Essential Pages -->
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Domain Configuration"
+                                     data-modal-body="Your domain is your digital address. It's how customers find you, and how you build brand trust. We don't wing it with domain setup – we get it dialed in for maximum impact. That means finding the perfect name (if you need help), securing the right domain, and setting up all the technical bits so search engines and shoppers never get lost.
+
+Forget DIY headaches! We'll handle DNS records, CNAMEs, A records, and all the other acronyms that make website launches stall. Whether you've already got a domain or need to register one, we'll ensure everything is configured seamlessly for smooth sailing from day one.
+
+Your kingdom, your rules. We give you the keys for easy domain management down the line. Need to make changes? Want to upgrade your online address? You'll be in the driver's seat with the expertise to navigate it all.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/settings.png">
+                                        </div>
+                                        <h3 class="modal-title">Domain Configuration</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Once you choose the right domain for your store, we'll cover the setup,
+                                            security, and all that technical jazz.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Domain & Tech Setup -->
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Store Settings & Preferences"
+                                     data-modal-body="Shopify settings got you stumped? Leave it to us! We'll dial in all the essential settings and preferences to make your store a well-oiled machine. Think optimized Shopify settings, seamless customer checkout, and rock-solid security – we'll leave no stone unturned.
+
+Don't settle for a half-baked setup. We'll meticulously test everything to ensure flawless functionality. From privacy preferences to temporary passwords, we'll take care of those pesky details so you can focus on what matters – selling more.
+
+Then, we'll make sure to empower you with the knowledge to manage your settings with confidence down the line. Need to make adjustments in the future? No problem, you'll be a Shopify master.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/configuration.png">
+                                        </div>
+                                        <h3 class="modal-title">Settings & preferences</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Shopify settings under control! We'll optimize everything for a flawless
+                                            functionality, from preferences to checkout.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. Payments & Delivery -->
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height">
+                                <div class="small_slider_card"
+                                     data-modal-title="GDPR Compliant"
+                                     data-modal-body="
+                                     In case you are not familiar with what SEO is and why you need it here is the
+                                     simplest explanation you can get: you need to let Google know, in his own language,
+                                     what your business and website are all about. Do this, and Google rewards your
+                                     website with better positioning in Google search results. Just don’t put your hopes
+                                     up for that first page right away.
+
+                                     Here
+                                's what's included:
+                                Keywords Research
+                                We will find the best and most relevant keywords combinations for your business.
+
+                                Page Optimisations
+                                We’ll optimize the contents, page titles, metadescriptions and URL’s for all your pages.
+
+                                Product Optimisations
+                                We’ll optimize the contents, page titles, metadescriptions and URL’s for all your
+                                products.
+
+                                Collection Optimisations
+                                We’ll optimize the contents, page titles, metadescriptions and URL’s for all your
+                                collections.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/seo.png">
+                                        </div>
+                                        <h3 class="modal-title">Basic SEO Optimisations</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            We’ll optimize the contents, page titles, metadescriptions and URL’s for all
+                                            your pages.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6. SEO Basics -->
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card" data-modal-title="GDPR Compliant"
+                                     data-modal-body="EU regulations got you stressed?  We'll conquer GDPR compliance for your Shopify store. No more privacy policy puzzles – we'll craft a rock-solid strategy and handle the setup so you can focus on selling, not stressing.
+
+Don't get caught in the GDPR trap! We'll ensure your store is compliant, protecting your customers' data and keeping you on the right side of the law. Whether you need a basic setup or a full-blown privacy fortress, we've got you covered.
+
+Peace of mind is priceless. With our GDPR expertise, you can sleep soundly knowing your store is operating above board. Focus on building your empire, leave the stressful details to us.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/gdpr.png">
+                                        </div>
+                                        <h3 class="modal-title">GDPR Compliant</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            We'll conquer compliance for your new Shopify store. Rock-solid privacy
+                                            strategy, stress-free setup.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 7. Legal & GDPR -->
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Business E-Mails Setup"
+                                     data-modal-body="Your brand deserves a voice, and your e-mails should shout it loud and clear. We'll ditch those generic Shopify notifications and set you up with custom branded e-mails. Imagine order confirmations that feel more like VIP welcomes, with a clear, branded touch.
+
+We'll link your custom domain to your Shopify e-mail accounts, so your staff and customers see your brand name front and center. This ain't just about aesthetics; it's about building trust and recognition with every e-mail you send.
+
+No coding headaches necessary! We'll take care of the technical setup and make sure your e-mails are firing on all cylinders. Forget spam folders, get ready to land straight in inboxes and hearts."
+                                >
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/email.png">
+                                        </div>
+                                        <h3 class="modal-title">Business E-Mails Setup</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Ditch generic e-mails! We'll set up your custom business e-mails, to
+                                            boost brand
+                                            trust and credibility.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 8. Analytics & Tracking -->
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Essentials Pages Design"
+                                     data-modal-body="Mandatory pages don't have to be boring. We'll transform those essential Shopify pages into brand powerhouses.  Imagine a homepage that wows, not yawns, and an 'About' page that builds a loyal tribe. We infuse each page with your unique style and persuasive copy that drives action.
+
+                            Ditch the cookie-cutter templates! We know the best design “formulas” for each page, and we’ll choose the best one based on the specifics of your store. We'll customize every essential page – from FAQs that clear the path to purchase to product pages that seal the deal.  Modern design, seamless navigation, and powerful calls to action – let's make every click count.
+
+                            Your pages, your rules. We'll ensure each piece of content aligns with your vision and brand voice. Confusing wireframes? Dry copy? Not on our watch. We'll turn even the 'fine print' into a tool that builds trust and converts.
+
+                            All our offers will cover the design of these pages: Homepage, About, Contact, FAQs, Search Page, Collection Page, Product Page, Cart, Checkout, Terms & Conditions, Privacy Policy, Delivery & Returns and Payment Methods.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/page_design.png">
+                                        </div>
+                                        <h3 class="modal-title">Essentials Pages Design</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Result-proven structure, compelling copy, and intuitive design wireframe
+                                            for all
+                                            the necessary pages.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 9. Emails & Notifications -->
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Promo Landing Page"
+                                     data-modal-body="Sales that scream success! We'll arm you with a killer promotional landing page template for those game-changing campaigns. Think Black Friday blowouts or holiday gift guides – we'll craft a landing page that converts browsers into buyers with laser focus.
+
+Forget generic templates that blend into the noise. We'll build a results-proven landing page that shouts your offer loud and clear. Easy customization and conversion-focused design, to make every click ring up the register.
+
+No coding knowledge needed! The landing page template will be a breeze to use and customise, letting you launch those sales in record time, with just a few minor tweaks. Focus on creating killer promotions, not on designing the landing page, that’s covered by us.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/promo.png">
+                                        </div>
+                                        <h3 class="modal-title">Promo Landing Page</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Easy to customise, made to sell big. A dynamic template that you can use
+                                            whenever you are running special campaigns.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 10. Performance & Core Web Vitals -->
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Language Setup"
+                                     data-modal-body="Choose your language, rule your market! We'll configure your Shopify store for maximum impact in either English or Romanian. Forget confusing translations or awkward phrasing – we'll make your brand messages crystal clear.
+
+Whether you're aiming for the Romanian market or conquering the English-speaking world, your store will speak the language of your ideal customers.  No more lost-in-translation moments, just powerful, clear communication that conveys the right message.
+
+We'll translate every essential element. From your theme content to sections copies, we'll ensure everything reads like it was written by a native speaker. Get ready to build trust and drive sales with a perfectly localized store.
+
+Only things that are not include: product descriptions, titles and other product-related information. Those are on you, as you are the one who knows the specifics details, but we can help you out, if you need us. We’ll set the table, you bring in main course!"
+                                >
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/language.png">
+                                        </div>
+                                        <h3 class="modal-title">Language Setup</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Choose your language, rule your market! Conquer English or Romanian with
+                                            a
+                                            perfectly localized store.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Delivery & Payment"
+                                     data-modal-body="Get paid and ship it fast! We'll set up delivery and payment options that work for you and your customers. Pick up to 3 delivery methods and let's nail those rates – flat fees, calculated shipping, whatever rocks your business model.
+
+We'll tackle all those essential payment methods too. Cash on Delivery? Bank transfers? Online payments? We'll configure a seamless checkout experience that builds trust and helps those sales pile up.
+
+No more payment method mix-ups! We'll handle integration with Shopify Payments and other popular gateways if needed. This means fewer abandoned carts and a streamlined experience for your shoppers.">
+
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/delivery.png">
+                                        </div>
+                                        <h3 class="modal-title">Delivery & Payment</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Choose your partners, set your rates, and we'll get it done, from
+                                            Shopify
+                                            Payments to your favorite courier.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Legal Content Templates"
+                                     data-modal-body="The fine print doesn't have to be a headache. We'll arm you with rock-solid legal content templates for those neceesary pages, build for us by an actual lawyer. Think crystal-clear terms and conditions, a privacy policy that builds trust, and shipping/returns info that keeps customers happy.
+
+All you have to do is customise them with your own info, which, be warned, can take you the better half of 5 minutes. Our templates are designed to be easily customized for your brand, ensuring you're legally covered without sacrificing your unique voice.
+
+Think of us as your legal content wingman. We won't leave you in a jargon jungle – you'll get the guidance you need to create those all-important pages with confidence.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/legal.png">
+                                        </div>
+                                        <h3 class="modal-title">Legal Content Templates</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Choose your language, rule your market! Conquer English or Romanian with
+                                            a
+                                            perfectly localized store.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="FAQ Page Content Templates"
+                                     data-modal-body="FAQs build trust and boost sales, when done right! Choose from a killer library of ready-to-customize pre-written FAQs that address those burning questions customers usually ask. Think shipping, returns, product details – we'll cover the basics and then some.
+
+No more blank page panic. Our templates are your starting point. Tweak them, add your brand personality, and create a FAQ page that converts those shoppers into confident buyers.
+
+Think of it as your FAQ shortcut. We'll save you time and brainpower with a comprehensive list that's easy to adapt.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/faq.png">
+                                        </div>
+                                        <h3 class="modal-title">FAQs Content Templates</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Choose from a list of the most commonly used FAQs and customise them to
+                                            your
+                                            liking.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Core Web Vitals Passed"
+                                     data-modal-body="Passing the Core Web Vitals test is an absolute must for any new website. It's Google's way of saying your website is really cool, so we need to make that happen.
+
+Google's rules, your win. We don't just build Shopify stores, we build stores that search engines love. We'll optimize your site to ace those Core Web Vitals tests, ensuring lightning-fast load times and rock-solid user experience.
+
+Forget slow, clunky stores. We're obsessed with speed. Think images that appear in a snap, pages that load without a hitch, and a seamless experience that keeps shoppers engaged and Google happy.
+
+Higher rankings, happier shoppers. Acing Core Web Vitals isn't just about pleasing Google – it's about delivering an experience that converts. Get ready to dominate search results and leave your competitors in the dust.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/coe.png">
+                                        </div>
+                                        <h3 class="modal-title">Core Web Vitals Passed</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            Ace Google's performance tests! We'll optimize your store for blazing
+                                            speed and
+                                            intuitive use experience.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1 button-modal">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide is-slider-main small-height">
+                            <div class="slider-main_link small-height button-modal">
+                                <div class="small_slider_card"
+                                     data-modal-title="Google Assets Setup"
+                                     data-modal-body="Data, your secret weapon! We'll arm you with the power of Google Search Console and Analytics for those next-level growth strategies. Once your store is live, it's game on – we'll handle the technical setup and give you the keys to the analytics kingdom.
+
+Forget flying blind. Track traffic, uncover customer behavior, and optimize your store for search engine domination. We'll configure everything, so you get those data-driven insights that fuel your e-commerce empire.
+
+Google Business Profile? Consider it handled. We'll set up your profile to stand out in search results, boosting your visibility and attracting local customers. Think accurate information, killer photos, and a polished presence that builds trust.">
+                                    <div>
+                                        <div class="icon-box-lp">
+                                            <img src="/assets/google.png">
+                                        </div>
+                                        <h3 class="modal-title">Google Assets Setup</h3>
+                                        <p class="text-body-3 reduce-width">
+                                            We'll set up Google Search Console, Analytics, and Business Profile so
+                                            you can
+                                            track, analyze and outsmart the competition.
+                                        </p>
+                                    </div>
+                                    <div class="modal-icon-button">
+                                        <span class="modal-icon-small">i</span>
+                                        <span class="text-micro-1">
+                                            Learn more
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- bottom: scrollbar + buttons group -->
+                <div class="slider-main_bottom-wrapper">
+                    <div class="swiper-drag-wrapper is-slider-main swiper-scrollbar-horizontal">
+                        <div class="swiper-drag is-slider-main"></div>
+                    </div>
+
+                    <div class="slider-main_button-wrapper">
+                        <button
+                                class="slider-main_button swiper-prev"
+                                aria-label="Previous slide"
+                        >
+                            <div class="slider-main_button-icon is-reversed">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.541 22.323">
+                                    <g transform="translate(0 1.014)">
+                                        <path
+                                                d="M115.445,20.633l9.311-10.148L115.445.338"
+                                                transform="translate(-97.25 -0.338)"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-miterlimit="10"
+                                                stroke-width="3"
+                                        />
+                                        <line
+                                                x1="27.506"
+                                                transform="translate(0 10.148)"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-miterlimit="10"
+                                                stroke-width="3"
+                                        />
+                                    </g>
+                                </svg>
+                            </div>
+                        </button>
+
+                        <button
+                                class="slider-main_button swiper-next"
+                                aria-label="Next slide"
+                        >
+                            <div class="slider-main_button-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.541 22.323">
+                                    <g transform="translate(0 1.014)">
+                                        <path
+                                                d="M115.445,20.633l9.311-10.148L115.445.338"
+                                                transform="translate(-97.25 -0.338)"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-miterlimit="10"
+                                                stroke-width="3"
+                                        />
+                                        <line
+                                                x1="27.506"
+                                                transform="translate(0 10.148)"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-miterlimit="10"
+                                                stroke-width="3"
+                                        />
+                                    </g>
+                                </svg>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    </section>
+
+
+    <!-- Confused let\s help-->
+    <section class="faq-section">
+        <div class="faq-inner">
+            <div class="section-label">FAQs</div>
+
+            <h2 class="section-title">CONFUSED? LET'S HELP!</h2>
+
+            <p class="section-description">
+                Here is a list of the most frequently asked questions we get about our offers,
+                to make it easier for you to understand what you're buying.
+            </p>
+
+            <div class="faq-list">
+                <!-- FAQ ITEM -->
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+          <span class="faq-left">
+            <span class="faq-icon">?</span>
+            <span class="faq-question">
+              Why did we build our own templates? Why choose one?
+            </span>
+          </span>
+                        <span class="faq-chevron">
+            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path d="M4.5 6l3.5 4 3.5-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </span>
+                    </button>
+
+                    <div class="faq-panel">
+                        <p class="text-body-3">Regular templates that you get from themes are usually build in order
+                            to
+                            showcase the main features of that theme. They are rather focused on generic structures,
+                            lacking optimisation in terms of conversion rate and user experience.<br><br>After years
+                            of
+                            experience in building online stores, we noticed that specific niches or store types
+                            have a
+                            clear winner in terms of theme selection, sections order, logic and wireframe.<br><br>It’s
+                            like having the opportunity to build your website based on the research from a large
+                            number
+                            of projects, all of which paid eye-watering amounts of money on A/B testing and ads to
+                            finally get to a conclusion you can get for free.<br><br>Using our own templates also
+                            allow
+                            us to engage in a very fast-paced design process, since we know exactly what needs to be
+                            done, without having to go through a creative process for each page we build on your
+                            store.<br><br>As you noticed, we use plural, because there are multiple templates to
+                            choose
+                            from, depending on the specific details of your store type and niche. At the moment,
+                            there
+                            are 12 ready-made templates, and we are working on building even more. <br><br>Don’t
+                            worry
+                            if you’re not exactly sure where your brand fits. It’s part of our discovery phase to
+                            get to
+                            know you and your brand, so we can recommend the best template and theme for you. The
+                            kind
+                            of content you already or are willing to produce play a huge part of the final choice.
+                            <br><br>The best results actually come when we are entrusted to completely make those
+                            decisions ourselves, while the customer keeps an open mind to our suggestions of
+                            creating
+                            new content, especially when it comes to lifestyle photos or videos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+          <span class="faq-left">
+            <span class="faq-icon">?</span>
+            <span class="faq-question">
+              What are dynamic sections and how do they work?
+            </span>
+          </span>
+                        <span class="faq-chevron">
+            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path d="M4.5 6l3.5 4 3.5-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </span>
+                    </button>
+
+                    <div class="faq-panel">
+                        <p class="text-body-3">Dynamic sources are Shopify-specific elements that allow us to build
+                            dynamic sections throughout the website. Picture this: on each product page, say, you
+                            want a
+                            section right beneath the product that highlights three special features of that
+                            product.
+                            Each feature is presented with a cover image, a headline, and a short text that explains
+                            the
+                            feature.<br><br>Now, as you probably know, these types of sections are normally static,
+                            meaning they usually show the same information and images no matter which product you
+                            visit.
+                            This is exactly where dynamic sources come in.<br><br>Through the use of dynamic
+                            sources, we
+                            can modify static sections to change their content based on what page, product, or
+                            collection the user is visiting. This opens up a world of design and user experience
+                            possibilities. We can now showcase product features, other related and complementary
+                            products or collections, background videos, dynamic shipping information, dynamic size
+                            guides, and so on. The sky is the limit!<br><br>What makes dynamic sources such a
+                            special
+                            thing to have on your store is the fact that, by using them, the contents of various
+                            pages
+                            will ”change” based on what the user is visiting. Put that together with some manual
+                            work of
+                            associating the right complementary products and visual information, and you can
+                            transform
+                            each product page in a very powerful landing page, that goes way beyond a standard
+                            product
+                            page design, thereby automatically increasing its conversion rate and user experience
+                            factor. How cool is that?</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+          <span class="faq-left">
+            <span class="faq-icon">?</span>
+            <span class="faq-question">
+              Why is there a products and collections number limit?
+            </span>
+          </span>
+                        <span class="faq-chevron">
+            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path d="M4.5 6l3.5 4 3.5-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </span>
+                    </button>
+
+                    <div class="faq-panel">
+                        <p class="text-body-3">We know it seems weird, but the number of products and by extension
+                            the
+                            number of collections actually dictate A LOT of our decision-making when it comes to the
+                            actual design and user experience. Here are just 3 examples:<br><br>1. A large number of
+                            products means a large number of filters and a large amount of time needed to plan and
+                            implement those filters.<br><br>2. A large number of collections means a menu that can
+                            support showcasing so many items, and usually three layers of subcategories.<br><br>3. A
+                            large number of products means taking a lot of time to actually help you with organizing
+                            them into intuitive collections and an intuitive menu structure, for the final user.<br><br>The
+                            list can go on! We think that the limits we chose for our offers are more than fair,
+                            since
+                            we have a lot of previous stores to learn from.<br><br>Our offers are designed to be
+                            perfect
+                            for specific types of stores, not for any kind of store, and that should help you
+                            understand
+                            why we chose to input certain limits. Also, products and collections vary depending
+                            which
+                            Fastrack model you end up choosing. There are no limits to custom-built stores (Shopify
+                            Bespoke offer).</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+          <span class="faq-left">
+            <span class="faq-icon">?</span>
+            <span class="faq-question">
+              Why is the products listing service not included as standard?
+            </span>
+          </span>
+                        <span class="faq-chevron">
+            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path d="M4.5 6l3.5 4 3.5-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </span>
+                    </button>
+
+                    <div class="faq-panel">
+                        <p class="text-body-3">This is the question we get asked most often. Simply put, store
+                            designing
+                            and product listing or feed migration are two different beasts. We know that most
+                            agencies
+                            usually include these services in their offers, but we do not agree with that
+                            approach.<br>‍<br>As
+                            you already saw, we tried to include everything we think is essentially needed in the
+                            standard offers, but also offer add-ons for other services, in case you need them. This
+                            is
+                            what we think to be a better way of offering these types of services. There are
+                            instances
+                            where you, as a customer, might want to list the products yourself. <br><br>In other
+                            cases,
+                            some customers are very feed-savvy and they do their own feed migration or feed
+                            importing
+                            process. Now if this was you, why would you have to pay for that in an offer that
+                            “includes”
+                            those services as default?<br>‍<br>Even more, our add-ons for product listing or feed
+                            mapping and import are very reasonably priced, so even adding up our standard offers
+                            together with the added services of listing/migrating products, you would still get a
+                            very
+                            good offer, considering the market cap and the quality you are getting.<br>‍<br>As a
+                            bonus,
+                            we always include the process of “learning” your feed as standard, at no extra charge,
+                            and
+                            then give a tailored guideline on how to best list your products on your own, with
+                            Shopify’s
+                            best practices in mind.<br><br>As mentioned, you don’t have to worry if you don’t feel
+                            comfortable doing this yourself, just check out the “Advanced Add-Ons” section and you
+                            will
+                            see there are options for you to choose that will enable us to bring in the products in
+                            your
+                            new store.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+          <span class="faq-left">
+            <span class="faq-icon">?</span>
+            <span class="faq-question">
+              Do you offer maintenance services once the new website is finished?
+            </span>
+          </span>
+                        <span class="faq-chevron">
+            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path d="M4.5 6l3.5 4 3.5-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </span>
+                    </button>
+
+                    <div class="faq-panel">
+                        <p class="text-body-3">Absolutely, and we would love to have you. If everything goes well in
+                            our
+                            collaboration (as it usually goes), we will most likely want to keep working on your
+                            project, as this would also enable us to ”protect” our portfolio and have a long-term,
+                            successful, ongoing collaboration with you.<br>‍<br>Whenever we run maintenance
+                            services, we
+                            will be the ones who make sure that everything is always up to date, in both terms of
+                            regular updates but also continuous store development, from our own initiative.<br><br>You
+                            can find details about our maintenance offers at the end of this page, and also keep in
+                            mind
+                            that these kinds of offers are usually tailor-made to best fit your needs.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+          <span class="faq-left">
+            <span class="faq-icon">?</span>
+            <span class="faq-question">
+              I need more than what you offer. Can I ask for a custom offer just for me?
+            </span>
+          </span>
+                        <span class="faq-chevron">
+            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path d="M4.5 6l3.5 4 3.5-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </span>
+                    </button>
+
+                    <div class="faq-panel">
+                        <p class="text-body-3">In short, yes! But we think our offers are carefully crafted to suit
+                            all
+                            needs, so there is a big chance the right offer is already available for you. Also,
+                            there
+                            are some store types that we don’t want to work on. <br>‍<br>In case you think that our
+                            standard offers are not suited to your needs, please use any of the available ways from
+                            our
+                            website to contact us, and we’d love to hear about your projects. <br><br>Any challenge
+                            is
+                            always welcomed at Coffeehouse!</p>
+                    </div>
+                </div>
+                <!-- repeat .faq-item for all other questions -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PORTFOLIO (reuse your Shopify work) -->
+    <section id="work">
+        <div class="container">
+            <p class="section-label">Portfolio</p>
+            <h2 class="section-title">SHOPIFY WORK THAT’S LIVE & SELLING</h2>
+            <p class="section-description">
+                A few Shopify projects we’ve been trusted with — from migrations and redesigns to full-stack
+                performance and subscription work.
+            </p>
+
+            <div class="portfolio-item item-1">
+                <div class="portfolio-content">
+                    <h3>LUMINSKIN</h3>
+                    <p>
+                        Global men’s skincare brand. We helped move from an aging Next.js storefront to a Shopify
+                        Plus
+                        stack, with a custom theme, bespoke subscription/loyalty apps and checkout extensions
+                        tailored
+                        to their funnel.
+                    </p>
+                    <p class="services">Our Services: Shopify Plus Development, Custom Apps</p>
+                    <a href="https://luminskin.com" class="btn" target="_blank" rel="noopener">Check it out!</a>
+                </div>
+                <div class="portfolio-image">
+                    <img src="/assets/shopify_luminskin.png" alt="Shopify Luminskin">
+                </div>
+            </div>
+
+            <div class="portfolio-item item-2">
+                <div class="portfolio-image">
+                    <img src="/assets/shopify_meridiangrooming.png" alt="Meridiangrooming">
+                </div>
+                <div class="portfolio-content item-2">
+                    <h3>MERIDIANGROOMING</h3>
+                    <p>
+                        Fast-growing DTC grooming brand. We migrated them to Shopify Plus, built a high-converting
+                        theme, subscription flows, post-purchase upsells and integrated key tools across their
+                        stack.
+                    </p>
+                    <p class="services">Our Services: Shopify Plus Development</p>
+                    <a href="https://meridiangrooming.com" class="btn" target="_blank" rel="noopener">Check it
+                        out!</a>
+                </div>
+            </div>
+
+            <div class="portfolio-item item-3">
+                <div class="portfolio-content">
+                    <h3>COUNTER CULTURE</h3>
+                    <p>
+                        UK-based clean beauty marketplace. Theme redesign, improved discovery and mobile UX, custom
+                        sections for curated brands and ingredient-based shopping, plus SEO and performance work.
+                    </p>
+                    <p class="services">Our Services: Shopify Development</p>
+                    <a href="https://counterculturestore.co.uk" class="btn" target="_blank" rel="noopener">Check it
+                        out!</a>
+                </div>
+                <div class="portfolio-image">
+                    <img src="/assets/shopify_counter_culture_store.png" alt="Counter Culture Store">
+                </div>
+            </div>
+
+            <div class="portfolio-item item-4">
+                <div class="portfolio-image">
+                    <img src="/assets/shopify_mondaine_watches.png" alt="Mondaine Watches">
+                </div>
+                <div class="portfolio-content">
+                    <h3>MONDAINE WATCHES</h3>
+                    <p>
+                        Iconic Swiss watch brand. We supported a refined Shopify experience with cleaner product
+                        storytelling, improved performance, accessibility and structure for long-term growth.
+                    </p>
+                    <p class="services">Our Services: Shopify Development</p>
+                    <a href="https://mondaine.com" class="btn" target="_blank" rel="noopener">Check it out!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+        <div class="container">
+            <p class="section-label">The Process</p>
+            <h2 class="section-title">HOW WE BUILD YOUR SHOPIFY STORE</h2>
+            <p class="section-description">
+                Our process is bullet-proof, service quality is a given. We already know you like us, so let’s get to
+                the final, funny bit: what’s the payment structure? We think you’ll really like this part (not).
+            </p>
+
+            <div class="process-card">
+                <div class="process-image">
+                    <img src="/assets/process.jpg" alt="Process">
+                </div>
+
+                <div class="process-steps">
+                    <div class="process-step">
+                        <h3>DISCOVERY CALL - ON THE HOUSE!</h3>
+                        <p class="text-body-3">In short, yes! But we think our offers are carefully crafted to suit all
+                            needs, so there is a big chance the right offer is already available for you. Also, there
+                            are some store types that we don’t want to work on. <br>‍<br>In case you think that our
+                            standard offers are not suited to your needs, please use any of the available ways from our
+                            website to contact us, and we’d love to hear about your projects. <br><br>Any challenge is
+                            always welcomed at Uvatime!</p>
+                    </div>
+
+                    <div class="process-step">
+                        <h3>20% NON-REFUNDABLE RETAINER</h3>
+                        <p class="text-body-1 text-color-dark">Includes all the research and planning tasks, with a
+                            dynamic visual website mock-up, so that you can "taste" your new store and understand what
+                            it will look, feel and work like in the end. And yeah, we do mean non-refundable!</p>
+                    </div>
+
+                    <div class="process-step">
+                        <h3>80% REMAINING PAYMENT</h3>
+                        <p class="text-body-1 text-color-dark">Once you agree with our plan and fully understand where
+                            everything is headed, you should have no issues with our upfront payment system for the
+                            remaining figure, provided we offer you strong terms of guarantee for our work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-wrapper" style="text-align: center;">
+                <h2 class="section-title">are you ready?</h2>
+                <p class="section-description">
+                    That about wraps it up! At this point, you should have a clear feeling about whether we are the
+                    right
+                    agency for you or not. If it’s a match, go ahead and choose the right offer for you, put in your
+                    details
+                    and we’ll get back to you in no time, to get things started. Cheers!
+                </p>
+                <a href="#prices" class="btn">Choose your plan!</a>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Feature modal -->
+<div class="feature-modal-overlay" id="featureModal" aria-hidden="true">
+    <div class="feature-modal" role="dialog" aria-modal="true" aria-labelledby="featureModalTitle">
+        <div class="close-modal-button" id="modalCloseButton">
+            <div class="fs-cc-banner_close-icon-2 w-embed">
+                <svg fill="currentColor" aria-hidden="true" focusable="false" viewBox="0 0 16 16">
+                    <path d="M9.414 8l4.293-4.293-1.414-1.414L8 6.586 3.707 2.293 2.293 3.707 6.586 8l-4.293 4.293 1.414 1.414L8 9.414l4.293 4.293 1.414-1.414L9.414 8z"></path>
+                </svg>
+            </div>
+        </div>
+
+
+        <div class="feature-modal-pill">Included Features</div>
+
+        <h2 id="featureModalTitle" class="feature-modal-title">
+            <!-- filled by JS -->
+        </h2>
+
+        <div class="feature-modal-body">
+            <!-- filled by JS -->
+        </div>
+
+        <button class="feature-modal-back">
+            Back to page
+        </button>
+    </div>
+</div>
+
+<!-- Footer (kept from your layout) -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom: 4rem;">
+                    <div class="logo-icon">
+                        <img src="/assets/uvatime_logo_white.png" alt="Logo">
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#prices">Prices </a>
+                    <div class="text-divider">/</div>
+                    <a href="#features">Features</a>
+                    <div class="text-divider">/</div>
+                    <a href="#work">Portfolio</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4 style="padding-top:1rem;">Get in touch</h4>
+                <a href="mailto:office@uvatime.com" style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff;">office@uvatime.com</a>
+                <a href="tel:+40752883350" style="padding-bottom: 1rem">+40 752 883 350</a>
+                <div class="line"></div>
+                <div class="footer-locations">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/>
+                        <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                    Brasov, Romania
+                </div>
+
+                <div class="footer-locations" style="padding-bottom: 1rem;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/>
+                        <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                    Jackson, Wyoming, USA
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Copyright UVATIME S.R.L.</p>
+            <div class="footer-bottom-links">
+                <a href="/terms-and-conditions">Terms & Conditions</a>
+                <a href="/privacy-policy">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+
+    function toggleMobileMenu() {
+        document.getElementById("mobileMenu").classList.toggle("active")
+    }
+
+    function closeMobileMenu() {
+        document.getElementById("mobileMenu").classList.remove("active")
+    }
+
+    document.addEventListener("DOMContentLoaded", (function () {
+        const e = document.querySelector(".swiper.is-slider-main"), t = (new Swiper(".swiper.is-slider-main", {
+                slidesPerView: "auto",
+                spaceBetween: 18.6,
+                freeMode: !0,
+                grabCursor: !0,
+                scrollbar: {
+                    el: ".swiper-drag-wrapper.is-slider-main",
+                    draggable: !0,
+                    dragClass: "swiper-drag is-slider-main"
+                },
+                navigation: {nextEl: ".slider-main_button.swiper-next", prevEl: ".slider-main_button.swiper-prev"}
+            }), document.getElementById("featureModal")), n = t.querySelector(".feature-modal-title"),
+            o = t.querySelector(".feature-modal-body"), s = t.querySelector(".close-modal-button"),
+            r = t.querySelector(".feature-modal-back");
+
+        function a(e) {
+            const s = e.dataset.modalTitle, r = e.dataset.modalBody, a = e.querySelector(".modal-title"),
+                l = e.querySelector(".text-body-3"), i = (s || a && a.textContent || "").trim(),
+                c = (r || l && l.textContent || "").trim();
+            n.textContent = i || "Included Feature", o.innerHTML = "", c.split(/\n\s*\n/).map((e => e.trim())).filter(Boolean).forEach((e => {
+                const t = document.createElement("p");
+                t.textContent = e, o.appendChild(t)
+            })), t.classList.add("is-open"), document.body.classList.add("no-scroll"), t.setAttribute("aria-hidden", "false")
+        }
+
+        function l() {
+            t.classList.remove("is-open"), document.body.classList.remove("no-scroll"), t.setAttribute("aria-hidden", "true")
+        }
+
+        document.querySelectorAll(".swiper-slide .button-modal").forEach((e => {
+            e.addEventListener("click", (function (e) {
+                e.preventDefault(), e.stopPropagation();
+                const t = this.closest(".small_slider_card");
+                t && a(t)
+            }))
+        })), document.querySelectorAll(".small_slider_card").forEach((e => {
+            e.addEventListener("click", (function (t) {
+                t.target.closest("button") || t.target.closest("a") || a(e)
+            }))
+        })), s.addEventListener("click", l), r.addEventListener("click", l), t.addEventListener("click", (function (e) {
+            e.target === t && l()
+        })), document.addEventListener("keydown", (function (e) {
+            "Escape" === e.key && t.classList.contains("is-open") && l()
+        })), e && (e.addEventListener("mousedown", (() => {
+            e.classList.add("grabbing")
+        })), window.addEventListener("mouseup", (() => {
+            e.classList.remove("grabbing")
+        })))
+    })), document.addEventListener("click", (e => {
+        const t = document.getElementById("mobileMenu"), n = document.querySelector(".hamburger");
+        t.contains(e.target) || n.contains(e.target) || t.classList.remove("active")
+    }));
+    let lastScrollY = window.scrollY;
+    window.addEventListener("scroll", (() => {
+        const e = document.querySelector("nav"), t = document.getElementById("mobileMenu"), n = window.scrollY;
+        t.classList.contains("active") ? (e.classList.remove("nav-hidden"), lastScrollY = n) : (n > 80 && n > lastScrollY ? e.classList.add("nav-hidden") : e.classList.remove("nav-hidden"), lastScrollY = n)
+    })), function () {
+        const e = document.querySelector(".container-hero-hp"), t = document.querySelector(".dark-on-scroll"),
+            n = document.querySelector(".container-hero-text");
+        if (!e || !t || !n) return;
+        window.addEventListener("scroll", (() => {
+            const o = window.scrollY, s = window.innerHeight || 1, r = Math.min(o / s, 1), a = 1 + (1.1 - 1) * r;
+            e.style.transform = `translate3d(0, 0, 0) scale3d(${a}, ${a}, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`, t.style.opacity = (.85 * r).toFixed(2);
+            const l = 1 - .7 * r, i = -20 * r;
+            n.style.opacity = l, n.style.transform = `translate3d(0, ${i}px, 0)`
+        }))
+    }(), document.addEventListener("DOMContentLoaded", (function () {
+        const e = document.querySelectorAll(".faq-item");
+        e.forEach((t => {
+            const n = t.querySelector(".faq-trigger"), o = t.querySelector(".faq-panel");
+            n && o && n.addEventListener("click", (() => {
+                const n = t.classList.contains("is-open");
+                e.forEach((e => e.classList.remove("is-open"))), n || t.classList.add("is-open")
+            }))
+        }))
+    }));
+</script>
+</body>
+</html>

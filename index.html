@@ -880,7 +880,7 @@
         </div>
         <div class="nav-links">
             <!-- Shopify & Offers both point to Services section for now -->
-            <a href="#services">Shopify</a>
+            <a href="/shopify-offers">Shopify</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#work">Portfolio</a>
@@ -1221,7 +1221,8 @@
     window.addEventListener("scroll", () => {
         const e = document.querySelector("nav"), t = document.getElementById("mobileMenu"), n = window.scrollY, o = 80;
         t.classList.contains("active") ? (e.classList.remove("nav-hidden"), lastScrollY = n) : (n > o && n > lastScrollY ? e.classList.add("nav-hidden") : e.classList.remove("nav-hidden"), lastScrollY = n)
-    }), function () {
+    }),
+        function () {
         const e = document.querySelector(".container-hero-hp"), t = document.querySelector(".dark-on-scroll"),
             n = document.querySelector(".container-hero-text");
         if (!e || !t || !n) return;
