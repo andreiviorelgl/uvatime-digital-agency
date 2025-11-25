@@ -356,6 +356,16 @@
             top: 7em;
         }
 
+        .portfolio-item.item-5 {
+            background-color: #171717;
+            top: 8em;
+        }
+
+        .portfolio-item.item-6 {
+            background-color: #131313;
+            top: 10em;
+        }
+
         .portfolio-item.item-3 img {
             object-position: center;
         }
@@ -402,6 +412,9 @@
         .portfolio-image:hover img {
             filter: grayscale(0);
             transform: scale(1.02);
+        }
+        .item-6 .portfolio-image img{
+            object-fit:contain;
         }
 
         /* Process (new layout) */
@@ -807,14 +820,16 @@
             }
 
             .portfolio-item.item-2 .portfolio-image,
-            .portfolio-item.item-4 .portfolio-image {
+            .portfolio-item.item-4 .portfolio-image,
+            .portfolio-item.item-6 .portfolio-image{
                 order: -1;
                 width: 100%;
                 height: 100%;
             }
 
             .portfolio-item.item-1 .portfolio-image,
-            .portfolio-item.item-3 .portfolio-image {
+            .portfolio-item.item-3 .portfolio-image,
+            .portfolio-item.item-5 .portfolio-image{
                 width: 100%;
                 height: 100%;
                 order:-1;
@@ -1050,7 +1065,7 @@
 
             <div class="portfolio-item item-3">
                 <div class="portfolio-content">
-                    <h3>COUNTER CULTUREs</h3>
+                    <h3>COUNTER CULTURE</h3>
                     <p>Counter Culture Store is a UK-based clean beauty marketplace featuring ethically sourced, indie
                         skincare brands. We redesigned their Shopify theme from the ground up, focusing on a cleaner
                         layout, improved product discovery, and a smoother mobile shopping experience. We built custom
@@ -1083,6 +1098,43 @@
                     <p class="services">Our Services: Branding, Website Development, Shopify Development</p>
                     <a href="https://mondaine.com" class="btn">Check it out!</a>
                 </div>
+            </div>
+
+            <div class="portfolio-item item-5">
+                <div class="portfolio-content">
+                    <h3>Quality Street</h3>
+                    <p>
+                        We partnered with Nestlé to enhance their iconic Quality Street brand by enabling a personalized gifting experience for their customers.
+                        Our team developed a seamless solution that allowed users to create custom boxes and gift cards.
+                    </p>
+                    <p class="services">Our Services: Print on Demand Integration</p>
+                    <a href="https://qualitystreetchocolate.com/" class="btn" target="_blank" rel="noopener">Check it out!</a>
+                </div>
+                <div class="portfolio-image">
+                    <img src="/assets/nestle-custom-tin.webp" alt="Nestle Integration">
+                </div>
+
+            </div>
+
+
+            <div class="portfolio-item item-6">
+                <div class="portfolio-image">
+                    <img src="/assets/Pangaea_Logo_v2-04.webp" alt="Custom Shopify App for Pangaea Holdings">
+                </div>
+                <div class="portfolio-content">
+                    <h3>Pangaea Holdings</h3>
+                    <p>
+                        We partnered with Pangaea Holdings to build a custom Shopify app supporting advanced analytics, post-purchase flows, dynamic discount creation, and theme content translation.
+                        The solution helps streamline marketing operations, improve customer engagement, and provide actionable insights directly within the Shopify ecosystem.
+                    </p>
+                    <p class="services">
+                        Our Services: Custom Shopify App Development, Analytics, Post-Purchase Features, Discount Automation, Theme Localization
+                    </p>
+                    <a href="https://pangaea.holdings" class="btn" target="_blank" rel="noopener">
+                        Check it out!
+                    </a>
+                </div>
+
             </div>
 
         </div>
