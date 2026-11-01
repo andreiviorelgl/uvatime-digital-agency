@@ -1,0 +1,58 @@
+User-agent: *
+Allow: /
+Disallow: /docs/
+
+# AI / LLM crawlers — allow indexing of service pages and llms files
+User-agent: GPTBot
+Allow: /
+Disallow: /docs/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /docs/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /docs/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /docs/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /docs/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /docs/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /docs/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /docs/
+
+User-agent: Bytespider
+Allow: /
+Disallow: /docs/
+
+User-agent: CCBot
+Allow: /
+Disallow: /docs/
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /docs/
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /docs/
+
+Sitemap: https://uvatime.com/sitemap.xml
+
+# Machine-readable site summary for AI assistants
+# https://uvatime.com/llms.txt
+# https://uvatime.com/llms-full.txt

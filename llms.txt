@@ -1,0 +1,31 @@
+# UVATIME
+
+> UVATIME is a digital agency specializing in Shopify development and Shopify CRO (conversion rate optimization) audits. Offices in Brasov, Romania and Jackson, Wyoming, USA.
+
+UVATIME helps e-commerce brands build high-performing Shopify stores and fix conversion leaks on homepage, collection, product page, and cart — with annotated Figma layouts developers can ship from.
+
+## Services
+
+- [Shopify CRO Audit](https://uvatime.com/shopify-cro-audit/): 3-business-day conversion audit of homepage, collection, product page and cart (desktop + mobile). Deliverables: annotated before/after Figma layouts, expected-effect notes, priority list (before Black Friday vs after), walkthrough call. Early bird 199 EUR until 9 November 2026, then 350 EUR. No Shopify admin access required — live store URL is enough. Implementation quoted separately.
+- [Shopify Development Offers](https://uvatime.com/shopify-offers/): Full Shopify store packages — Fastrack 2600 EUR, Enhanced 3600 EUR, Bespoke 6600 EUR.
+- Software development and mobile (React Native / PWA) — see homepage.
+
+## Key pages
+
+- [Homepage](https://uvatime.com/)
+- [Shopify CRO Audit](https://uvatime.com/shopify-cro-audit/)
+- [Shopify Offers](https://uvatime.com/shopify-offers/)
+- [Privacy Policy](https://uvatime.com/privacy-policy/)
+- [Terms and Conditions](https://uvatime.com/terms-and-conditions/)
+
+## Contact
+
+- Email: office@uvatime.com
+- Phone: +40 752 883 350
+- Book a call: https://koalendar.com/e/meet-with-viorel
+- Website: https://uvatime.com
+
+## Optional
+
+- [Full site summary for AI](https://uvatime.com/llms-full.txt)
+- [XML sitemap](https://uvatime.com/sitemap.xml)
