@@ -1,6 +1,6 @@
 # UVATIME
 
-> UVATIME is a digital agency specializing in Shopify development and Shopify CRO (conversion rate optimization) audits. Offices in Brasov, Romania and Jackson, Wyoming, USA.
+> UVATIME is a digital agency specializing in Shopify development and Shopify CRO (conversion rate optimization) audits. Offices in Brasov, Brasov, Romania and Jackson, Wyoming, USA.
 
 UVATIME helps e-commerce brands build high-performing Shopify stores and fix conversion leaks on homepage, collection, product page, and cart — with annotated Figma layouts developers can ship from.
 

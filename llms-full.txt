@@ -4,7 +4,7 @@ Site: https://uvatime.com
 Brand: UVATIME / UVATIME S.R.L.  
 Contact: office@uvatime.com · +40 752 883 350  
 Booking: https://koalendar.com/e/meet-with-viorel  
-Locations: Brasov, Romania · Jackson, Wyoming, USA
+Locations: Brasov, Brasov, Romania · Jackson, Wyoming, USA
 
 ## What UVATIME is
 
