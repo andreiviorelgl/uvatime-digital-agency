@@ -1,0 +1,1252 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVATIME | Shopify CRO Audit — Figma Conversion Audit from 199€</title>
+    <meta name="description" content="Shopify CRO Audit: annotated Figma layouts for homepage, collection, product page and cart — desktop and mobile. Delivered in 3 business days. Early bird 199€ until 9 Nov 2026.">
+    <meta name="keywords" content="Shopify CRO audit, Shopify conversion audit, Figma Shopify audit, Black Friday Shopify fixes, conversion rate optimization Shopify">
+    <link rel="canonical" href="https://uvatime.com/nl/shopify-cro-audit/">
+    <link rel="alternate" hreflang="en" href="https://uvatime.com/shopify-cro-audit/">
+    <link rel="alternate" hreflang="de" href="https://uvatime.com/de/shopify-cro-audit/">
+    <link rel="alternate" hreflang="da" href="https://uvatime.com/da/shopify-cro-audit/">
+    <link rel="alternate" hreflang="nl" href="https://uvatime.com/nl/shopify-cro-audit/">
+    <link rel="alternate" hreflang="fr" href="https://uvatime.com/fr/shopify-cro-audit/">
+    <link rel="alternate" hreflang="es" href="https://uvatime.com/es/shopify-cro-audit/">
+    <link rel="alternate" hreflang="it" href="https://uvatime.com/it/shopify-cro-audit/">
+    <link rel="alternate" hreflang="nl-BE" href="https://uvatime.com/be/shopify-cro-audit/">
+    <link rel="alternate" hreflang="x-default" href="https://uvatime.com/shopify-cro-audit/">
+    <meta property="og:title" content="Shopify CRO Audit | UVATIME">
+    <meta property="og:description" content="Annotated Figma layouts for the four pages that win or lose Shopify sales. 199€ until 9 Nov 2026.">
+    <meta property="og:url" content="https://uvatime.com/shopify-cro-audit/">
+    <meta property="og:type" content="website">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Shopify CRO Audit",
+      "serviceType": "Shopify conversion rate optimization audit",
+      "provider": {
+        "@type": "Organization",
+        "name": "UVATIME",
+        "url": "https://uvatime.com",
+        "email": "office@uvatime.com",
+        "telephone": "+40752883350"
+      },
+      "areaServed": "Worldwide",
+      "url": "https://uvatime.com/shopify-cro-audit/",
+      "description": "Review of Shopify homepage, collection, product page and cart on desktop and mobile. Annotated before/after Figma layouts, priority list and walkthrough call. Delivered in 3 business days.",
+      "offers": {
+        "@type": "Offer",
+        "price": "199",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "validThrough": "2026-11-09",
+        "url": "https://uvatime.com/shopify-cro-audit/",
+        "description": "Early bird price until 9 November 2026; 350 EUR thereafter."
+      }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:wght@400;700&family=Roboto+Condensed:wght@400;500;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/assets/i18n/i18n.css">
+    <script src="/assets/i18n/languages.js"></script>
+    <script src="/assets/i18n/translations.js"></script>
+    <script src="/assets/i18n/i18n.js"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/uvatime_logo_black_favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/uvatime_logo_black_favicon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/uvatime_logo_black_favicon.png">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'PT Sans', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 1rem;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+            font-family: "Roboto Condensed", sans-serif;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            transition: transform 0.3s ease;
+        }
+        nav.nav-hidden { transform: translate3d(0, -100%, 0); }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-icon { border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .logo-icon img { height: 30px; }
+        .nav-links { display: none; gap: 2rem; }
+        .nav-links a {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            opacity: 0.85;
+            transition: color 0.2s ease, opacity 0.2s ease;
+        }
+        .nav-links a:hover { color: #9b9b9b; opacity: 1; }
+        .hamburger { display: flex; flex-direction: column; gap: 0.375rem; cursor: pointer; }
+        .hamburger-line { width: 1.5rem; height: 2px; background-color: #fff; }
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            padding: 0 1.5rem 1rem;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+        }
+        @media (min-width: 768px) {
+            .logo-icon img { height: 65px; }
+            .nav-links { display: flex; }
+            .hamburger { display: none; }
+        }
+        .btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            border: 2px solid #fff;
+            cursor: pointer;
+            font-family: "Roboto Condensed", sans-serif;
+            letter-spacing: -.01em;
+        }
+        .btn:hover { color: #fff; background-color: transparent; }
+        section { padding: 2.5rem 1.5rem; }
+        .section-label {
+            text-align: center;
+            font-size: 0.875rem;
+            font-family: "Roboto Condensed", sans-serif;
+            color: #9b9b9b;
+            border: 1px solid #292828;
+            background-color: #121212;
+            border-radius: 100em;
+            margin-bottom: 40px;
+            padding: 10px 15px 8px;
+            display: inline-flex;
+        }
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.625rem);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        .section-description {
+            color: #999;
+            text-align: center;
+            max-width: 34rem;
+            margin: 0 auto 1rem;
+            line-height: 1.8;
+            font-family: "Roboto Condensed", sans-serif;
+            letter-spacing: -.01em;
+        }
+        .grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; width: 100%; }
+        @media (min-width: 768px) {
+            .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .pricing-hero {
+            width: 100%;
+            max-width: 720px;
+            margin: 2rem auto 0;
+            border-radius: 25px;
+            padding: 40px;
+            border: 2px solid #292828;
+            background-color: #181818;
+            text-align: center;
+        }
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0 0.5rem;
+        }
+        .price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 12vw, 80px);
+            line-height: 1;
+        }
+        .price-was {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: #666;
+            text-decoration: line-through;
+        }
+        .pricing-tag {
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 0.85rem;
+            color: #bbb;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .pricing-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0 2rem;
+            font-family: "Roboto Condensed", sans-serif;
+            color: #9b9b9b;
+            font-size: 0.95rem;
+        }
+        .pricing-meta strong {
+            display: block;
+            color: #fff;
+            font-size: 1.25rem;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.15rem;
+        }
+        .pricing-divider {
+            width: 100%;
+            height: 1px;
+            background-color: #292828;
+            margin: 1.25rem 0;
+        }
+        .pricing-list {
+            list-style: none;
+            text-align: left;
+            max-width: 420px;
+            margin: 0 auto 1.75rem;
+        }
+        .pricing-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            color: #9b9b9b;
+            font-family: "Roboto Condensed", sans-serif;
+            margin-bottom: 0.65rem;
+            font-size: 1rem;
+        }
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: #fff;
+        }
+
+        .cover-card, .deliverable-card, .finding-card, .audience-card {
+            border-radius: 25px;
+            padding: 32px 28px;
+            border: 2px solid #292828;
+            background-color: #181818;
+            height: 100%;
+        }
+        .cover-card .num,
+        .deliverable-card .num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            color: #666;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.75rem;
+        }
+        .cover-card h3,
+        .deliverable-card h3,
+        .finding-card h3,
+        .audience-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+        .cover-card ul {
+            list-style: none;
+        }
+        .cover-card ul li {
+            color: #9b9b9b;
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            padding: 0.55rem 0;
+            border-top: 1px solid #292828;
+        }
+        .cover-card ul li:first-child { border-top: none; padding-top: 0; }
+        .deliverable-card p,
+        .finding-card p,
+        .audience-card p {
+            color: #9b9b9b;
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+        .finding-card .before {
+            color: #777;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: "Roboto Condensed", sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-card {
+            width: 100%;
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 40px;
+            background-color: #0b0b0b;
+            border-radius: 32px;
+            border: 2px solid #292828;
+            padding: 40px;
+        }
+        .process-image {
+            width: 40%;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        .process-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            min-height: 320px;
+        }
+        .process-steps {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .process-step h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        .process-step p {
+            color: #c1c1c1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+        .process-step + .process-step {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+        }
+
+        footer {
+            z-index: 3;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            margin-top: -40px;
+            padding: 3em 1.5rem;
+            position: relative;
+            background-color: #0b0b0b;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+        .footer-grid {
+            display: flex;
+            margin-bottom: 2.5rem;
+            width: 100%;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .footer-links a { color: #9b9b9b; text-decoration: none; }
+        .footer-links a:hover { color: #999; }
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #292828;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+        }
+        .footer-section > :not(.line) { padding: 0 1rem; }
+        .footer-section h4 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: 0.04em;
+        }
+        .footer-section a { color: #999; text-decoration: none; }
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: #666;
+            width: 100%;
+            align-items: center;
+        }
+        .footer-bottom-links { display: flex; gap: 1.5rem; }
+        .footer-bottom-links a { color: #666; text-decoration: none; }
+        .footer-bottom-links a:hover { color: #fff; }
+        .text-divider {
+            color: #9b9b9b;
+            letter-spacing: -.01em;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .footer-locations {
+            display: flex;
+            margin-top: 1rem;
+            align-items: center;
+            font-size: 14px;
+            color: #999;
+            gap: 0.35rem;
+        }
+        .line { background-color: #292828; width: 100%; height: 2px; }
+        @media (min-width: 768px) {
+            footer .logo-icon img { height: 100px; }
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .section.hero {
+            z-index: 1;
+            background-color: #000;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0;
+            display: flex;
+            position: fixed;
+            inset: 0% 0% auto;
+            overflow: hidden;
+        }
+        .container-hero-hp {
+            position: absolute;
+            inset: 0;
+            margin: 0 auto;
+            background-image: linear-gradient(#0b0b0b80, #0000 43%), url("/assets/hero_image.jpg");
+            background-position: 0 0, 50%;
+            background-size: auto, cover;
+            background-repeat: no-repeat;
+            will-change: transform;
+            transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+            transform-style: preserve-3d;
+            z-index: 1;
+        }
+        .dark-on-scroll {
+            z-index: 99;
+            background-color: #000;
+            opacity: 0;
+            position: absolute;
+            inset: 0;
+            will-change: opacity;
+            pointer-events: none;
+        }
+        .container-hero-text {
+            z-index: 100;
+            align-items: center;
+            margin: auto;
+            padding: 0 3.25em 1rem;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .container-hero-text .row.hero-image { max-width: 1100px; margin: 0 auto; }
+        .container-hero-text h1.heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.8rem, 11vw, 7rem);
+            line-height: 1;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.25rem;
+            font-weight: 400;
+        }
+        .container-hero-text p {
+            color: #ccc;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            max-width: 36rem;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+        .hero-subnav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-family: "Roboto Condensed", sans-serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+        }
+        .hero-subnav a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid #333;
+            opacity: 0.9;
+        }
+        .hero-subnav a:hover { opacity: 1; border-color: #fff; color: white; }
+        .button-primary {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            padding: .5rem;
+        }
+        .button-inner {
+            position: relative;
+            z-index: 2;
+            background-color: #fff;
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+        .button-bg {
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            border: 1px solid #fff;
+            opacity: 0.3;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            transform: scale(1.05);
+        }
+        .button-primary:hover .button-bg { opacity: 0.7; transform: scale(1.1); }
+        .sections-wrapper {
+            z-index: 2;
+            background-color: #0b0b0b;
+            border-radius: 50px 50px 0 0;
+            margin-top: 90vh;
+            padding-top: 40px;
+            padding-bottom: 64px;
+            position: relative;
+        }
+
+        .faq-section { color: #fff; padding: 2.5rem 1.5rem; width: 100%; }
+        .faq-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .faq-list {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            width: 100%;
+        }
+        .faq-item {
+            background: #171717;
+            padding: 1.1rem 1.8rem;
+            transition: border-radius 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            border-radius: 32px;
+            border: 2px solid #292828;
+        }
+        .faq-item.is-open {
+            background: #1c1c1c;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        .faq-trigger {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            cursor: pointer;
+            text-align: left;
+            padding: 0;
+        }
+        .faq-left { display: flex; align-items: center; gap: 0.9rem; }
+        .faq-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 999px;
+            border: 1px solid #fff;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .faq-question {
+            font-size: 1rem;
+            font-family: "Roboto Condensed", sans-serif;
+            font-weight: 400;
+        }
+        .faq-chevron {
+            display: inline-flex;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+        .faq-chevron svg { width: 100%; height: 100%; }
+        .faq-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding-top 0.35s ease;
+        }
+        .faq-panel p {
+            font-size: 1rem;
+            color: #9b9b9b;
+            margin: 0 0 1rem;
+            letter-spacing: -.01em;
+            line-height: 1.4;
+            font-family: "Roboto Condensed", sans-serif;
+        }
+        .faq-item.is-open .faq-panel {
+            max-height: 1200px;
+            padding-top: 0.85rem;
+            margin-top: 0.35rem;
+        }
+        .faq-item.is-open .faq-chevron { transform: rotate(180deg); }
+        .faq-item:not(.is-open):hover {
+            background: #1c1c1c;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-wrapper {
+            border: 2px solid #292828;
+            background-color: #0b0b0b;
+            text-align: center;
+            border-radius: 25px;
+            padding: 80px 40px;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 767px) {
+            .container { padding: 0; }
+            .pricing-hero { padding: 24px; }
+            .container-hero-text { padding-left: 1.25em; padding-right: 1.25em; }
+            .container-hero-text h1.heading { font-size: clamp(3.2rem, 14vw, 5.5rem); }
+            .container-hero-text p { font-size: 1rem; }
+            .cover-card, .deliverable-card, .finding-card, .audience-card { padding: 24px; }
+            .faq-item { padding-inline: 1.4rem; }
+            .faq-question { font-size: 0.85rem; }
+            .faq-item.is-open .faq-panel { max-height: none; }
+            .contact-wrapper { padding: 48px 24px; }
+        }
+        @media (max-width: 900px) {
+            .process-card { flex-direction: column; padding: 24px; gap: 24px; }
+            .process-image, .process-steps { width: 100%; }
+            .process-image img { min-height: 220px; }
+        }
+    </style>
+</head>
+<body data-i18n-title="cro.title" data-i18n-desc="cro.metaDesc">
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <a class="logo-icon" href="/">
+                <img src="/assets/uvatime_logo_white.png" alt="UVATIME">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="#offer" data-i18n="nav.offer">Offer</a>
+            <a href="#covers" data-i18n="nav.covers">Covers</a>
+            <a href="#process" data-i18n="nav.process">Process</a>
+            <a href="/shopify-offers/" data-i18n="nav.shopifyBuilds">Shopify Builds</a>
+            <a href="/" data-i18n="nav.home">Homepage</a>
+        </div>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#offer" onclick="closeMobileMenu()" data-i18n="nav.offer">Offer</a>
+        <a href="#covers" onclick="closeMobileMenu()" data-i18n="nav.covers">Covers</a>
+        <a href="#process" onclick="closeMobileMenu()" data-i18n="nav.process">Process</a>
+        <a href="/shopify-offers/" onclick="closeMobileMenu()" data-i18n="nav.shopifyBuilds">Shopify Builds</a>
+        <a href="/" onclick="closeMobileMenu()" data-i18n="nav.home">Homepage</a>
+    </div>
+</nav>
+
+<section class="section hero">
+    <div class="container-hero-hp"></div>
+    <div class="dark-on-scroll"></div>
+    <div class="container-hero-text">
+        <div class="row hero-image">
+            <h1 class="heading" data-i18n="cro.heroTitle">Shopify CRO Audit</h1>
+            <p data-i18n="cro.heroSub">
+                We review the four pages where Shopify stores win or lose sales — homepage, collection, product page and cart — on desktop and mobile. You get annotated layouts in Figma and a priority list your team can ship fast.
+            </p>
+            <div class="hero-subnav">
+                <a href="#offer" data-i18n="cro.subPricing">Pricing</a>
+                <a href="#covers" data-i18n="cro.subReview">What we review</a>
+                <a href="#deliverables" data-i18n="cro.subGet">What you get</a>
+            </div>
+            <a href="https://koalendar.com/e/meet-with-viorel" class="button-primary" data-i18n-skip>
+                <div class="button-inner" data-i18n="common.bookAudit">Book the audit</div>
+                <div class="button-bg"></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="sections-wrapper">
+    <section id="offer">
+        <div class="container">
+            <p class="section-label" data-i18n="cro.offerLabel">Limited offer</p>
+            <h2 class="section-title" data-i18n="cro.offerTitle">FIX WHAT COSTS YOU SALES</h2>
+            <p class="section-description" data-i18n="cro.offerIntro">
+                Black Friday pricing for stores that book by November 9, 2026. Delivery in 3 business days — with time left to ship fixes before the freeze.
+            </p>
+
+            <div class="pricing-hero">
+                <div class="price-row">
+                    <div class="price">199€</div>
+                    <div class="price-was">350€</div>
+                </div>
+                <p class="pricing-tag" data-i18n="cro.until">Until November 9 · then 350€</p>
+                <div class="pricing-meta">
+                    <div>
+                        <strong data-i18n="cro.metaDays">3 days</strong>
+                        <span data-i18n="cro.metaDaysSub">Audit delivery</span>
+                    </div>
+                    <div>
+                        <strong data-i18n="cro.metaPages">4 pages</strong>
+                        <span data-i18n="cro.metaPagesSub">Desktop + mobile</span>
+                    </div>
+                    <div>
+                        <strong data-i18n="cro.metaCall">1 call</strong>
+                        <span data-i18n="cro.metaCallSub">Walkthrough included</span>
+                    </div>
+                </div>
+                <div class="pricing-divider"></div>
+                <ul class="pricing-list">
+                    <li>
+                        <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path></svg>
+                        <span data-i18n="cro.bullet1">Annotated before / after layouts in Figma</span>
+                    </li>
+                    <li>
+                        <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path></svg>
+                        <span data-i18n="cro.bullet2">Expected effect note for every change</span>
+                    </li>
+                    <li>
+                        <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path></svg>
+                        <span data-i18n="cro.bullet3">Priority list: ship before BF vs plan later</span>
+                    </li>
+                    <li>
+                        <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4l8-8z"></path></svg>
+                        <span data-i18n="cro.bullet4">Walkthrough call with your team</span>
+                    </li>
+                </ul>
+                <a href="https://koalendar.com/e/meet-with-viorel" class="btn" data-i18n="common.bookCall" data-i18n-skip>Book your call</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="covers">
+        <div class="container">
+            <p class="section-label" data-i18n="cro.coversLabel">Scope</p>
+            <h2 class="section-title" data-i18n="cro.coversTitle">WHAT THE AUDIT COVERS</h2>
+            <p class="section-description" data-i18n="cro.coversIntro">
+                Four pages. Two devices. The exact places shoppers decide to buy — or bounce.
+            </p>
+            <div class="grid grid-2" style="margin-top: 2rem;">
+                <div class="cover-card">
+                    <div class="num">/01</div>
+                    <h3 data-i18n="cro.c1Title">Homepage &amp; collection</h3>
+                    <ul>
+                        <li data-i18n="cro.c1a">Whether the first screen says what you sell and where to start</li>
+                        <li data-i18n="cro.c1b">Category entry points and steps to reach a product</li>
+                        <li data-i18n="cro.c1c">Trust signals: shipping, returns, authenticity above the fold</li>
+                        <li data-i18n="cro.c1d">Filters, sorting and product card information</li>
+                        <li data-i18n="cro.c1e">How the grid reads and scrolls on a phone</li>
+                    </ul>
+                </div>
+                <div class="cover-card">
+                    <div class="num">/02</div>
+                    <h3 data-i18n="cro.c2Title">Product page</h3>
+                    <ul>
+                        <li data-i18n="cro.c2a">Order of information above the fold</li>
+                        <li data-i18n="cro.c2b">Variant and size selection clarity</li>
+                        <li data-i18n="cro.c2c">Delivery and return details next to Add to Cart</li>
+                        <li data-i18n="cro.c2d">Sticky purchase bar on mobile</li>
+                        <li data-i18n="cro.c2e">Cross-sell blocks that raise order value</li>
+                    </ul>
+                </div>
+                <div class="cover-card">
+                    <div class="num">/03</div>
+                    <h3 data-i18n="cro.c3Title">Cart</h3>
+                    <ul>
+                        <li data-i18n="cro.c3a">Order summary with subtotal, shipping and savings</li>
+                        <li data-i18n="cro.c3b">Free shipping threshold messaging</li>
+                        <li data-i18n="cro.c3c">Cross-sell inside the cart</li>
+                        <li data-i18n="cro.c3d">Checkout button and trust messages around it</li>
+                    </ul>
+                </div>
+                <div class="cover-card">
+                    <div class="num">/04</div>
+                    <h3 data-i18n="cro.c4Title">Desktop + mobile</h3>
+                    <ul>
+                        <li data-i18n="cro.c4a">Every page reviewed on both viewports</li>
+                        <li data-i18n="cro.c4b">Phones drive most holiday retail visits</li>
+                        <li data-i18n="cro.c4c">Thumb-reach and sticky actions called out</li>
+                        <li data-i18n="cro.c4d">Layout notes your developer can build from</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="deliverables">
+        <div class="container">
+            <p class="section-label" data-i18n="cro.delLabel">Deliverables</p>
+            <h2 class="section-title" data-i18n="cro.delTitle">WHAT YOU GET</h2>
+            <p class="section-description" data-i18n="cro.delIntro">
+                Every recommendation comes as a layout your team can build from — not a vague slide deck.
+            </p>
+            <div class="grid grid-2" style="margin-top: 2rem;">
+                <div class="deliverable-card">
+                    <div class="num">01</div>
+                    <h3 data-i18n="cro.d1Title">Annotated Figma layouts</h3>
+                    <p data-i18n="cro.d1Body">Before and after for all four pages, with every change marked directly on the design so developers know exactly what to ship.</p>
+                </div>
+                <div class="deliverable-card">
+                    <div class="num">02</div>
+                    <h3 data-i18n="cro.d2Title">Expected effect notes</h3>
+                    <p data-i18n="cro.d2Body">A short note on what each change fixes and whether it should lift conversion rate or average order value.</p>
+                </div>
+                <div class="deliverable-card">
+                    <div class="num">03</div>
+                    <h3 data-i18n="cro.d3Title">Priority list</h3>
+                    <p data-i18n="cro.d3Body">Fixes ranked by impact and effort, split into what to ship before Black Friday and what to plan after the rush.</p>
+                </div>
+                <div class="deliverable-card">
+                    <div class="num">04</div>
+                    <h3 data-i18n="cro.d4Title">Walkthrough call</h3>
+                    <p data-i18n="cro.d4Body">We walk your marketers and developers through the findings and agree on what goes live first.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="findings">
+        <div class="container">
+            <p class="section-label" data-i18n="cro.findLabel">Example findings</p>
+            <h2 class="section-title" data-i18n="cro.findTitle">WHAT WE TYPICALLY FIX</h2>
+            <p class="section-description" data-i18n="cro.findIntro">
+                Patterns we see again and again on Shopify fashion and beauty stores — and the layouts we recommend instead.
+            </p>
+            <div class="grid grid-3" style="margin-top: 2rem;">
+                <div class="finding-card">
+                    <p class="before" data-i18n="cro.findTag">Finding</p>
+                    <h3 data-i18n="cro.find1Title">Hero with no next step</h3>
+                    <p data-i18n="cro.find1Body">One photo and a single Shop Now. We add clear entry points — Shop Men / Shop Women — right in the hero.</p>
+                </div>
+                <div class="finding-card">
+                    <p class="before" data-i18n="cro.findTag">Finding</p>
+                    <h3 data-i18n="cro.find2Title">Trust buried below</h3>
+                    <p data-i18n="cro.find2Body">Authenticity, shipping and returns only in the footer. We move them into a trust bar under the hero.</p>
+                </div>
+                <div class="finding-card">
+                    <p class="before" data-i18n="cro.findTag">Finding</p>
+                    <h3 data-i18n="cro.find3Title">Crowded filters</h3>
+                    <p data-i18n="cro.find3Body">All filters in one messy row. We add quick category chips and a cleaner sort / filter bar.</p>
+                </div>
+                <div class="finding-card">
+                    <p class="before" data-i18n="cro.findTag">Finding</p>
+                    <h3 data-i18n="cro.find4Title">Details hidden in tabs</h3>
+                    <p data-i18n="cro.find4Body">Size guide, shipping and returns collapsed far from the button. We group them with price and Add to Bag.</p>
+                </div>
+                <div class="finding-card">
+                    <p class="before" data-i18n="cro.findTag">Finding</p>
+                    <h3 data-i18n="cro.find5Title">Add to Bag lost on scroll</h3>
+                    <p data-i18n="cro.find5Body">Shoppers scroll back up to buy. We add a sticky purchase bar with size, price and CTA on mobile.</p>
+                </div>
+                <div class="finding-card">
+                    <p class="before" data-i18n="cro.findTag">Finding</p>
+                    <h3 data-i18n="cro.find6Title">Generic cart drawer</h3>
+                    <p data-i18n="cro.find6Body">A plain Buy button. We add order summary, Complete the Look, and Secure Checkout with trust copy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <div class="container">
+            <p class="section-label" data-i18n="cro.processLabel">The Process</p>
+            <h2 class="section-title" data-i18n="cro.processTitle">HOW THE AUDIT WORKS</h2>
+            <p class="section-description" data-i18n="cro.processIntro">
+                From booking to fixes on your live store — before the pre-sale code freeze.
+            </p>
+            <div class="process-card" style="margin-top: 2rem;">
+                <div class="process-image">
+                    <img src="/assets/process.jpg" alt="Audit process">
+                </div>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <h3 data-i18n="cro.p1Title">01 · Send your store URL</h3>
+                        <p data-i18n="cro.p1Body">Analytics from last Black Friday help, but are optional. The live store is enough to start.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3 data-i18n="cro.p2Title">02 · Desktop &amp; mobile review</h3>
+                        <p data-i18n="cro.p2Body">We walk homepage, collection, product page and cart as a first-time shopper would — on both devices.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3 data-i18n="cro.p3Title">03 · Audit in 3 business days</h3>
+                        <p data-i18n="cro.p3Body">Annotated Figma layouts, expected-effect notes and the priority list land in your inbox.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3 data-i18n="cro.p4Title">04 · Walkthrough + ship</h3>
+                        <p data-i18n="cro.p4Body">We go through findings with your team. You ship the fixes — or we quote implementation separately.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="audience">
+        <div class="container">
+            <p class="section-label" data-i18n="cro.audLabel">Best fit</p>
+            <h2 class="section-title" data-i18n="cro.audTitle">WHO THE AUDIT IS FOR</h2>
+            <p class="section-description" data-i18n="cro.audIntro">
+                Shopify brands that want more sales from the traffic they already get.
+            </p>
+            <div class="grid grid-2" style="margin-top: 2rem;">
+                <div class="audience-card">
+                    <h3 data-i18n="cro.aud1Title">Preparing for Black Friday</h3>
+                    <p data-i18n="cro.aud1Body">Fix what costs you sales before the busiest week — without a full redesign or risky theme rewrite.</p>
+                </div>
+                <div class="audience-card">
+                    <h3 data-i18n="cro.aud2Title">Traffic but low conversion</h3>
+                    <p data-i18n="cro.aud2Body">You already pay for visitors. Too many leave before checkout. The audit targets the leaks.</p>
+                </div>
+                <div class="audience-card">
+                    <h3 data-i18n="cro.aud3Title">Fashion &amp; beauty brands</h3>
+                    <p data-i18n="cro.aud3Body">Most stores we audit are apparel and cosmetics — where product pages and trust drive the purchase.</p>
+                </div>
+                <div class="audience-card">
+                    <h3 data-i18n="cro.aud4Title">Shopify Plus welcome</h3>
+                    <p data-i18n="cro.aud4Body">Same review. Implementation can also cover checkout changes as a separate quote after the audit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <div class="faq-inner">
+            <p class="section-label" data-i18n="cro.faqLabel">FAQ</p>
+            <h2 class="section-title" data-i18n="cro.faqTitle">QUESTIONS</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+                        <span class="faq-left">
+                            <span class="faq-icon">?</span>
+                            <span class="faq-question" data-i18n="cro.faq1Q">What does a Shopify CRO audit from UVATIME include?</span>
+                        </span>
+                        <span class="faq-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </button>
+                    <div class="faq-panel">
+                        <p data-i18n="cro.faq1A">The audit covers four pages: the homepage, a collection page, a product page and the cart, on desktop and mobile. You get annotated before and after layouts in Figma, a note on the expected effect of every change, a priority list and a walkthrough call. The price is 199€ for stores that book by November 9, 2026, and 350€ after that.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+                        <span class="faq-left">
+                            <span class="faq-icon">?</span>
+                            <span class="faq-question" data-i18n="cro.faq2Q">How long does a Shopify CRO audit take?</span>
+                        </span>
+                        <span class="faq-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </button>
+                    <div class="faq-panel">
+                        <p data-i18n="cro.faq2A">The audit is delivered within 3 business days after booking. A store that books on November 9 gets its results by November 12, with time left to ship fixes before Black Friday on November 27.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+                        <span class="faq-left">
+                            <span class="faq-icon">?</span>
+                            <span class="faq-question" data-i18n="cro.faq3Q">Is there still time to improve conversion before Black Friday?</span>
+                        </span>
+                        <span class="faq-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </button>
+                    <div class="faq-panel">
+                        <p data-i18n="cro.faq3A">Yes, for targeted changes. Most stores freeze their theme about a week before Black Friday, which leaves a few weeks for fixes such as trust messages near the Add to Cart button, a sticky purchase bar on mobile or a clearer cart summary. Last year Black Friday brought $11.8 billion in US online sales, up 9.1% year over year, according to Adobe Analytics.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+                        <span class="faq-left">
+                            <span class="faq-icon">?</span>
+                            <span class="faq-question" data-i18n="cro.faq4Q">Do you need access to my Shopify admin for the audit?</span>
+                        </span>
+                        <span class="faq-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </button>
+                    <div class="faq-panel">
+                        <p data-i18n="cro.faq4A">No. The audit reviews the live store, so the store URL is enough to start. Analytics from previous sales help prioritize the pages and devices with the most traffic, but they are optional.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+                        <span class="faq-left">
+                            <span class="faq-icon">?</span>
+                            <span class="faq-question" data-i18n="cro.faq5Q">What results can I expect from a Shopify CRO audit?</span>
+                        </span>
+                        <span class="faq-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </button>
+                    <div class="faq-panel">
+                        <p data-i18n="cro.faq5A">Shopify stores that ship conversion fixes typically see conversion rate grow by 5 to 15% and average order value by 5 to 12% within four to five weeks, which adds up to 10 to 20% more revenue per visitor. Clean Commit, a Shopify CRO agency, reports an average 14% conversion lift and 11% revenue per visitor lift in the first month of work. For a store that made $100,000 last Black Friday, a 10% conversion lift and an 8% order value lift mean about $119,000 from the same traffic.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+                        <span class="faq-left">
+                            <span class="faq-icon">?</span>
+                            <span class="faq-question" data-i18n="cro.faq6Q">Which changes have worked for other Shopify brands?</span>
+                        </span>
+                        <span class="faq-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </button>
+                    <div class="faq-panel">
+                        <p data-i18n="cro.faq6A">Results depend on traffic, catalog and how many changes ship. In a published A/B test for NuFace, a free shipping message placed above the shop button increased orders by 90% and average order value by 7.3%. A Google and Deloitte study found that mobile pages loading 0.1 seconds faster raised retail conversion rates by 8.4%.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+                        <span class="faq-left">
+                            <span class="faq-icon">?</span>
+                            <span class="faq-question" data-i18n="cro.faq7Q">How should I measure the results after Black Friday?</span>
+                        </span>
+                        <span class="faq-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </button>
+                    <div class="faq-panel">
+                        <p data-i18n="cro.faq7A">Compare this year’s Black Friday with last year’s, not with a regular week in October. Shopify data puts the average Black Friday conversion rate at 5.86%, against 2.8% across the rest of the year, so any store looks better during the sale. Revenue per visitor is the most reliable metric, because a change can raise conversion rate while lowering order value.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger" type="button">
+                        <span class="faq-left">
+                            <span class="faq-icon">?</span>
+                            <span class="faq-question" data-i18n="cro.faq8Q">Can UVATIME implement the changes after the audit?</span>
+                        </span>
+                        <span class="faq-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </button>
+                    <div class="faq-panel">
+                        <p data-i18n="cro.faq8A">Yes. UVATIME is a Shopify development agency and can ship the recommended changes on your theme. Implementation is quoted after the audit and scheduled before your pre-sale code freeze. Full store builds are on our Shopify Offers page.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <h2 class="section-title" data-i18n="cro.ctaTitle">READY TO AUDIT?</h2>
+                <p class="section-description" data-i18n="cro.ctaBody">
+                    Send us your store URL. In three business days you get Figma layouts, a priority list, and a call to decide what ships first. Cheers!
+                </p>
+                <a href="https://koalendar.com/e/meet-with-viorel" class="btn" data-i18n="common.bookAudit" data-i18n-skip>Book the audit</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom: 4rem;">
+                    <div class="logo-icon">
+                        <img src="/assets/uvatime_logo_white.png" alt="UVATIME">
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#offer" data-i18n="nav.offer">Offer</a>
+                    <div class="text-divider">/</div>
+                    <a href="#covers" data-i18n="nav.covers">Covers</a>
+                    <div class="text-divider">/</div>
+                    <a href="/shopify-offers/" data-i18n="nav.shopifyBuilds">Shopify Builds</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4 style="padding-top:1rem;" data-i18n="footer.getInTouch">Get in touch</h4>
+                <a href="mailto:office@uvatime.com" style="margin-bottom: 0.5rem;" data-i18n-skip>office@uvatime.com</a>
+                <a href="tel:+40752883350" style="padding-bottom: 1rem" data-i18n-skip>+40 752 883 350</a>
+                <div class="line"></div>
+                <div class="footer-locations">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/>
+                        <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                    Brasov, Brasov, Romania
+                </div>
+                <div class="footer-locations" style="padding-bottom: 1rem;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/>
+                        <circle cx="12" cy="10" r="2.5"/>
+                    </svg>
+                    Jackson, Wyoming, USA
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer.copyright">© 2026 Copyright UVATIME S.R.L.</p>
+            <div class="footer-bottom-links">
+                <a href="/terms-and-conditions/" data-i18n="footer.terms">Terms &amp; Conditions</a>
+                <a href="/privacy-policy/" data-i18n="footer.privacy">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById("mobileMenu");
+        if (!mobileMenu) return;
+        mobileMenu.classList.toggle("active");
+    }
+
+    function closeMobileMenu() {
+        const mobileMenu = document.getElementById("mobileMenu");
+        if (!mobileMenu) return;
+        mobileMenu.classList.remove("active");
+    }
+
+    document.addEventListener("click", event => {
+        const mobileMenu = document.getElementById("mobileMenu");
+        const hamburger = document.querySelector(".hamburger");
+        if (!mobileMenu || !hamburger) return;
+        if (!mobileMenu.contains(event.target) && !hamburger.contains(event.target)) {
+            mobileMenu.classList.remove("active");
+        }
+    });
+
+    let lastScrollY = window.scrollY;
+    window.addEventListener("scroll", () => {
+        const nav = document.querySelector("nav");
+        const mobileMenu = document.getElementById("mobileMenu");
+        if (!nav) return;
+        const currentY = window.scrollY;
+        if (mobileMenu && mobileMenu.classList.contains("active")) {
+            nav.classList.remove("nav-hidden");
+            lastScrollY = currentY;
+            return;
+        }
+        if (currentY > 80 && currentY > lastScrollY) {
+            nav.classList.add("nav-hidden");
+        } else {
+            nav.classList.remove("nav-hidden");
+        }
+        lastScrollY = currentY;
+    });
+
+    (function () {
+        const heroBg = document.querySelector(".container-hero-hp");
+        const heroOverlay = document.querySelector(".dark-on-scroll");
+        const heroText = document.querySelector(".container-hero-text");
+        if (!heroBg || !heroOverlay || !heroText) return;
+        window.addEventListener("scroll", () => {
+            const scrollY = window.scrollY;
+            const viewportH = window.innerHeight || 1;
+            const progress = Math.min(scrollY / viewportH, 1);
+            const scale = 1 + 0.1 * progress;
+            heroBg.style.transform = `translate3d(0, 0, 0) scale3d(${scale}, ${scale}, 1)`;
+            heroOverlay.style.opacity = (0.85 * progress).toFixed(2);
+            heroText.style.opacity = 1 - 0.7 * progress;
+            heroText.style.transform = `translate3d(0, ${-20 * progress}px, 0)`;
+        });
+    })();
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const items = document.querySelectorAll(".faq-item");
+        items.forEach(item => {
+            const trigger = item.querySelector(".faq-trigger");
+            if (!trigger) return;
+            trigger.addEventListener("click", () => {
+                const isOpen = item.classList.contains("is-open");
+                items.forEach(i => i.classList.remove("is-open"));
+                if (!isOpen) item.classList.add("is-open");
+            });
+        });
+    });
+</script>
+</body>
+</html>

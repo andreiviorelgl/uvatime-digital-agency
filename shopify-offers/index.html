@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UVATIME | Shopify Development</title>
+    <link rel="canonical" href="https://uvatime.com/shopify-offers/">
+    <link rel="alternate" hreflang="en" href="https://uvatime.com/shopify-offers/">
+    <link rel="alternate" hreflang="de" href="https://uvatime.com/de/shopify-offers/">
+    <link rel="alternate" hreflang="da" href="https://uvatime.com/da/shopify-offers/">
+    <link rel="alternate" hreflang="nl" href="https://uvatime.com/nl/shopify-offers/">
+    <link rel="alternate" hreflang="fr" href="https://uvatime.com/fr/shopify-offers/">
+    <link rel="alternate" hreflang="es" href="https://uvatime.com/es/shopify-offers/">
+    <link rel="alternate" hreflang="it" href="https://uvatime.com/it/shopify-offers/">
+    <link rel="alternate" hreflang="nl-BE" href="https://uvatime.com/be/shopify-offers/">
+    <link rel="alternate" hreflang="x-default" href="https://uvatime.com/shopify-offers/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:wght@400;700&family=Roboto+Condensed:wght@400;500;700&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="/assets/i18n/i18n.css">
+    <script src="/assets/i18n/languages.js"></script>
+    <script src="/assets/i18n/translations.js"></script>
+    <script src="/assets/i18n/i18n.js"></script>
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/uvatime_logo_black_favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/uvatime_logo_black_favicon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="/assets/uvatime_logo_black_favicon.png">
@@ -1383,7 +1397,7 @@ display: flex;
         }
     </style>
 </head>
-<body>
+<body data-i18n-title="offers.title">
 <nav>
     <div class="nav-container">
         <div class="logo">
@@ -1392,11 +1406,11 @@ display: flex;
             </a>
         </div>
         <div class="nav-links">
-            <a href="#prices">Prices</a>
-            <a href="#features">Features</a>
-            <a href="#work">Portfolio</a>
-            <a href="/shopify-cro-audit">CRO Audit</a>
-            <a href="/">Homepage</a>
+            <a href="#prices" data-i18n="nav.prices">Prices</a>
+            <a href="#features" data-i18n="nav.features">Features</a>
+            <a href="#work" data-i18n="nav.work">Portfolio</a>
+            <a href="/shopify-cro-audit/" data-i18n="nav.cro">CRO Audit</a>
+            <a href="/" data-i18n="nav.home">Homepage</a>
         </div>
         <div class="hamburger" onclick="toggleMobileMenu()">
             <div class="hamburger-line"></div>
@@ -1405,11 +1419,11 @@ display: flex;
         </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#prices" onclick="closeMobileMenu()">Prices</a>
-        <a href="#features" onclick="closeMobileMenu()">Features</a>
-        <a href="#work" onclick="closeMobileMenu()">Portfolio</a>
-        <a href="/shopify-cro-audit" onclick="closeMobileMenu()">CRO Audit</a>
-        <a href="/" onclick="closeMobileMenu()">Homepage</a>
+        <a href="#prices" onclick="closeMobileMenu()" data-i18n="nav.prices">Prices</a>
+        <a href="#features" onclick="closeMobileMenu()" data-i18n="nav.features">Features</a>
+        <a href="#work" onclick="closeMobileMenu()" data-i18n="nav.work">Portfolio</a>
+        <a href="/shopify-cro-audit/" onclick="closeMobileMenu()" data-i18n="nav.cro">CRO Audit</a>
+        <a href="/" onclick="closeMobileMenu()" data-i18n="nav.home">Homepage</a>
     </div>
 </nav>
 
@@ -1419,20 +1433,20 @@ display: flex;
 
     <div class="container-hero-text">
         <div class="row hero-image">
-            <h1 class="heading">build your e-comm empire</h1>
-            <p class="section-description">
+            <h1 class="heading" data-i18n="offers.heroTitle">build your e-comm empire</h1>
+            <p class="section-description" data-i18n="offers.heroSub">
                 Start your journey to e-commerce dominance and transform your store into a stunning, high-performance
                 Shopify sales machine.
             </p>
 
             <div class="hero-subnav">
-                <a href="#prices">Packages</a>
-                <a href="#features">What’s included</a>
-                <a href="#work">Live work</a>
+                <a href="#prices" data-i18n="offers.subPackages">Packages</a>
+                <a href="#features" data-i18n="offers.subIncluded">What’s included</a>
+                <a href="#work" data-i18n="offers.subLive">Live work</a>
             </div>
 
             <a href="#prices" class="button-primary">
-                <div class="button-inner">
+                <div class="button-inner" data-i18n="offers.ctaSee">
                     See offers
                 </div>
                 <div class="button-bg"></div>
@@ -1444,26 +1458,26 @@ display: flex;
 <div class="sections-wrapper">
     <section id="prices">
         <div class="container">
-            <p class="section-label">Introduction</p>
-            <h2 class="section-title">WHY CHOOSE SHOPIFY?</h2>
-            <p class="section-description">
+            <p class="section-label" data-i18n="offers.introLabel">Introduction</p>
+            <h2 class="section-title" data-i18n="offers.introTitle">WHY CHOOSE SHOPIFY?</h2>
+            <p class="section-description" data-i18n="offers.introBody">
                 Want a stunning online store that’s
                 a breeze to run? Shopify's ease of use, stunning design options, powerful marketing tools, and
-                rock-solid security make it the perfect platform to launch or elevate your e-commerce business. <br><br>With
+                rock-solid security make it the perfect platform to launch or elevate your e-commerce business. With
                 over 6 years of experience, our expert team will handle all the setups and customizations, so you can
                 focus on building your brand and growing sales. Let's start your Uvatime x Shopify experience!
             </p>
-            <p class="section-label">Services Pricing</p>
-            <h2 class="section-title">Our offers</h2>
-            <p class="section-description reduce-width-desktop">
+            <p class="section-label" data-i18n="offers.pricingLabel">Services Pricing</p>
+            <h2 class="section-title" data-i18n="offers.pricingTitle">Our offers</h2>
+            <p class="section-description reduce-width-desktop" data-i18n="offers.pricingIntro">
                 We've got pricing options to fuel your growth, whether you're a scrappy
                 startup or a scaling powerhouse store.
             </p>
 
             <div class="grid grid-3">
                 <div class="pricing-card">
-                    <h3 class="pricing-title">SHOPIFY FASTRACK</h3>
-                    <p class="pricing-subtitle">
+                    <h3 class="pricing-title" data-i18n="offers.fastrackTitle">SHOPIFY FASTRACK</h3>
+                    <p class="pricing-subtitle" data-i18n="offers.fastrackSub">
                         Choose a premium store theme. Complete shop delivery in 2 weeks.
                     </p>
 
@@ -1534,14 +1548,14 @@ display: flex;
                         </li>
                     </ul>
 
-                    <a href="https://koalendar.com/e/meet-with-viorel" class="btn pricing-btn">
+                    <a href="https://koalendar.com/e/meet-with-viorel" class="btn pricing-btn" data-i18n="common.bookCall" data-i18n-skip>
                         Book your call!
                     </a>
                 </div>
 
                 <div class="pricing-card">
-                    <h3 class="pricing-title">SHOPIFY ENHANCED</h3>
-                    <p class="pricing-subtitle">
+                    <h3 class="pricing-title" data-i18n="offers.enhancedTitle">SHOPIFY ENHANCED</h3>
+                    <p class="pricing-subtitle" data-i18n="offers.enhancedSub">
                         Make it unique! Fastrack, with a tailored touch.
                         Complete shop delivery in 3 weeks.
                     </p>
@@ -1613,14 +1627,14 @@ display: flex;
                         </li>
                     </ul>
 
-                    <a href="https://koalendar.com/e/meet-with-viorel" class="btn pricing-btn">
+                    <a href="https://koalendar.com/e/meet-with-viorel" class="btn pricing-btn" data-i18n="common.bookCall" data-i18n-skip>
                         Book your call!
                     </a>
                 </div>
 
                 <div class="pricing-card">
-                    <h3 class="pricing-title">SHOPIFY BESPOKE</h3>
-                    <p class="pricing-subtitle">
+                    <h3 class="pricing-title" data-i18n="offers.bespokeTitle">SHOPIFY BESPOKE</h3>
+                    <p class="pricing-subtitle" data-i18n="offers.bespokeSub">
                         Our signature, custom store-building experience.
                         Complete shop delivery in 6 weeks.
                     </p>
@@ -1692,7 +1706,7 @@ display: flex;
                         </li>
                     </ul>
 
-                    <a href="https://koalendar.com/e/meet-with-viorel" class="btn pricing-btn">
+                    <a href="https://koalendar.com/e/meet-with-viorel" class="btn pricing-btn" data-i18n="common.bookCall" data-i18n-skip>
                         Book your call!
                     </a>
                 </div>
@@ -2293,11 +2307,11 @@ Google Business Profile? Consider it handled. We'll set up your profile to stand
 
     <section class="faq-section">
         <div class="faq-inner">
-            <div class="section-label">FAQs</div>
+            <div class="section-label" data-i18n="offers.faqLabel">FAQs</div>
 
-            <h2 class="section-title">CONFUSED? LET'S HELP!</h2>
+            <h2 class="section-title" data-i18n="offers.faqTitle">CONFUSED? LET'S HELP!</h2>
 
-            <p class="section-description">
+            <p class="section-description" data-i18n="offers.faqIntro">
                 Here is a list of the most frequently asked questions we get about our offers,
                 to make it easier for you to understand what you're buying.
             </p>
@@ -2671,9 +2685,9 @@ Google Business Profile? Consider it handled. We'll set up your profile to stand
 
     <section id="process">
         <div class="container">
-            <p class="section-label">The Process</p>
-            <h2 class="section-title">HOW WE BUILD YOUR SHOPIFY STORE</h2>
-            <p class="section-description">
+            <p class="section-label" data-i18n="offers.processLabel">The Process</p>
+            <h2 class="section-title" data-i18n="offers.processTitle">HOW WE BUILD YOUR SHOPIFY STORE</h2>
+            <p class="section-description" data-i18n="offers.processIntro">
                 Our process is bullet-proof, service quality is a given. We already know you like us, so let’s get to
                 the final, funny bit: what’s the payment structure? We think you’ll really like this part (not).
             </p>
@@ -2721,15 +2735,15 @@ Google Business Profile? Consider it handled. We'll set up your profile to stand
     <section id="contact">
         <div class="container">
             <div class="contact-wrapper" style="text-align: center;">
-                <h2 class="section-title">are you ready?</h2>
-                <p class="section-description">
+                <h2 class="section-title" data-i18n="offers.contactTitle">are you ready?</h2>
+                <p class="section-description" data-i18n="offers.contactBody">
                     That about wraps it up! At this point, you should have a clear feeling about whether we are the
                     right
                     agency for you or not. If it’s a match, go ahead and choose the right offer for you, put in your
                     details
                     and we’ll get back to you in no time, to get things started. Cheers!
                 </p>
-                <a href="#prices" class="btn">Choose your plan!</a>
+                <a href="#prices" class="btn" data-i18n="offers.choosePlan">Choose your plan!</a>
             </div>
         </div>
     </section>
@@ -2767,17 +2781,17 @@ Google Business Profile? Consider it handled. We'll set up your profile to stand
                     </div>
                 </div>
                 <div class="footer-links">
-                    <a href="#prices">Prices </a>
+                    <a href="#prices" data-i18n="nav.prices">Prices </a>
                     <div class="text-divider">/</div>
-                    <a href="#features">Features</a>
+                    <a href="#features" data-i18n="nav.features">Features</a>
                     <div class="text-divider">/</div>
-                    <a href="#work">Portfolio</a>
+                    <a href="#work" data-i18n="nav.work">Portfolio</a>
                 </div>
             </div>
             <div class="footer-section">
-                <h4 style="padding-top:1rem;">Get in touch</h4>
-                <a href="mailto:office@uvatime.com" style="margin-bottom: 0.5rem;">office@uvatime.com</a>
-                <a href="tel:+40752883350" style="padding-bottom: 1rem">+40 752 883 350</a>
+                <h4 style="padding-top:1rem;" data-i18n="footer.getInTouch">Get in touch</h4>
+                <a href="mailto:office@uvatime.com" style="margin-bottom: 0.5rem;" data-i18n-skip>office@uvatime.com</a>
+                <a href="tel:+40752883350" style="padding-bottom: 1rem" data-i18n-skip>+40 752 883 350</a>
                 <div class="line"></div>
                 <div class="footer-locations">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
@@ -2799,10 +2813,10 @@ Google Business Profile? Consider it handled. We'll set up your profile to stand
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Copyright UVATIME S.R.L.</p>
+            <p data-i18n="footer.copyright">© 2026 Copyright UVATIME S.R.L.</p>
             <div class="footer-bottom-links">
-                <a href="/terms-and-conditions">Terms & Conditions</a>
-                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-and-conditions/" data-i18n="footer.terms">Terms & Conditions</a>
+                <a href="/privacy-policy/" data-i18n="footer.privacy">Privacy Policy</a>
             </div>
         </div>
     </div>

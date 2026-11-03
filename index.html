@@ -7,6 +7,15 @@
     <meta name="description" content="UVATIME digital agency: Shopify store builds from 2600€ and Shopify CRO Audit from 199€. Annotated Figma layouts for homepage, collection, product page and cart. Brasov · Wyoming.">
     <meta name="keywords" content="Shopify CRO audit, Shopify conversion rate optimization, Shopify development agency, UVATIME, Figma Shopify audit, Black Friday store fixes">
     <link rel="canonical" href="https://uvatime.com/">
+    <link rel="alternate" hreflang="en" href="https://uvatime.com/">
+    <link rel="alternate" hreflang="de" href="https://uvatime.com/de/">
+    <link rel="alternate" hreflang="da" href="https://uvatime.com/da/">
+    <link rel="alternate" hreflang="nl" href="https://uvatime.com/nl/">
+    <link rel="alternate" hreflang="fr" href="https://uvatime.com/fr/">
+    <link rel="alternate" hreflang="es" href="https://uvatime.com/es/">
+    <link rel="alternate" hreflang="it" href="https://uvatime.com/it/">
+    <link rel="alternate" hreflang="nl-BE" href="https://uvatime.com/be/">
+    <link rel="alternate" hreflang="x-default" href="https://uvatime.com/">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/uvatime_logo_black_favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/uvatime_logo_black_favicon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="/assets/uvatime_logo_black_favicon.png">
@@ -16,6 +25,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:wght@400;700&family=Roboto+Condensed:wght@400;500;700&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="/assets/i18n/i18n.css">
+    <script src="/assets/i18n/languages.js"></script>
+    <script src="/assets/i18n/translations.js"></script>
+    <script src="/assets/i18n/i18n.js"></script>
 
     <script type="application/ld+json">
     {
@@ -1094,23 +1107,23 @@
     </style>
 
 </head>
-<body>
+<body data-i18n-title="home.title" data-i18n-desc="home.metaDesc">
 
 <!-- Navigation -->
 <nav>
     <div class="nav-container">
         <div class="logo">
             <a class="logo-icon" href="/">
-                <img src="assets/uvatime_logo_white.png" alt="Logo">
+                <img src="/assets/uvatime_logo_white.png" alt="Logo">
             </a>
         </div>
         <div class="nav-links">
-            <a href="/shopify-offers">Shopify Offers</a>
-            <a href="/shopify-cro-audit">CRO Audit</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#work">Portfolio</a>
-            <a href="#contact">Contact</a>
+            <a href="/shopify-offers/" data-i18n="nav.offers">Shopify Offers</a>
+            <a href="/shopify-cro-audit/" data-i18n="nav.cro">CRO Audit</a>
+            <a href="#about" data-i18n="nav.about">About</a>
+            <a href="#services" data-i18n="nav.services">Services</a>
+            <a href="#work" data-i18n="nav.work">Portfolio</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
         </div>
         <div class="hamburger" onclick="toggleMobileMenu()">
             <div class="hamburger-line"></div>
@@ -1119,12 +1132,12 @@
         </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="/shopify-offers" onclick="closeMobileMenu()">Shopify</a>
-        <a href="/shopify-cro-audit" onclick="closeMobileMenu()">CRO Audit</a>
-        <a href="#about" onclick="closeMobileMenu()">About</a>
-        <a href="#services" onclick="closeMobileMenu()">Services</a>
-        <a href="#work" onclick="closeMobileMenu()">Portfolio</a>
-        <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+        <a href="/shopify-offers/" onclick="closeMobileMenu()" data-i18n="nav.mobileShopify">Shopify</a>
+        <a href="/shopify-cro-audit/" onclick="closeMobileMenu()" data-i18n="nav.cro">CRO Audit</a>
+        <a href="#about" onclick="closeMobileMenu()" data-i18n="nav.about">About</a>
+        <a href="#services" onclick="closeMobileMenu()" data-i18n="nav.services">Services</a>
+        <a href="#work" onclick="closeMobileMenu()" data-i18n="nav.work">Portfolio</a>
+        <a href="#contact" onclick="closeMobileMenu()" data-i18n="nav.contact">Contact</a>
     </div>
 </nav>
 
@@ -1139,13 +1152,13 @@
     <!-- Hero text layer -->
     <div class="container-hero-text">
         <div class="row hero-image">
-            <h1 class="heading homepage-hero-width">LET'S MAKE IT HAPPEN!</h1>
-            <p class="text-body-2 text-color-dark _20px-padding-bottom paragraph-width-250-m">
+            <h1 class="heading homepage-hero-width" data-i18n="home.heroTitle">LET'S MAKE IT HAPPEN!</h1>
+            <p class="text-body-2 text-color-dark _20px-padding-bottom paragraph-width-250-m" data-i18n="home.heroSub">
                 Building an e-commerce business? Need a new website? We got you!
             </p>
             <a href="#about" class="button-primary">
                 <div class="button-inner">
-                    <div class="text-micro-1 button-text-ok">Learn more</div>
+                    <div class="text-micro-1 button-text-ok" data-i18n="common.learnMore">Learn more</div>
                 </div>
                 <div class="button-bg"></div>
             </a>
@@ -1156,9 +1169,9 @@
     <!-- Why Choose Us -->
     <section id="about">
         <div class="container">
-            <p class="section-label">About Us</p>
-            <h2 class="section-title">WHY CHOOSE US?</h2>
-            <p class="section-description">
+            <p class="section-label" data-i18n="home.aboutLabel">About Us</p>
+            <h2 class="section-title" data-i18n="home.aboutTitle">WHY CHOOSE US?</h2>
+            <p class="section-description" data-i18n="home.aboutBody">
                 Up to you, really! If you're already vibin' with our website, we must be doing something right. Also, it
                 just so happens that every project we touch looks amazingly clean, works like a charm, and yeah, makes
                 some money along the way. We believe that the way you do one thing is the way you do all things. And
@@ -1170,21 +1183,21 @@
     <!-- Services Section -->
     <section id="services">
         <div class="container">
-            <p class="section-label">Our Services</p>
-            <h2 class="section-title">SO HOW CAN WE HELP?</h2>
-            <p class="section-description">
+            <p class="section-label" data-i18n="home.servicesLabel">Our Services</p>
+            <h2 class="section-title" data-i18n="home.servicesTitle">SO HOW CAN WE HELP?</h2>
+            <p class="section-description" data-i18n="home.servicesIntro">
                 Build your business from the ground-up or scale it further than ever before. Have a look at all of our
                 in-house services:
             </p>
             <div class="grid grid-3">
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/shopify-icon.png" alt="shopify-icon">
+                        <img src="/assets/shopify-icon.png" alt="shopify-icon">
                     </div>
-                    <h3>SHOPIFY DEVELOPMENT</h3>
-                    <p>Made to sell, designed to inspire! Full store builds from 2600€ — or start with a Shopify CRO
+                    <h3 data-i18n="home.svcShopifyTitle">SHOPIFY DEVELOPMENT</h3>
+                    <p data-i18n="home.svcShopifyBody">Made to sell, designed to inspire! Full store builds from 2600€ — or start with a Shopify CRO
                         Audit (199€) to fix homepage, collection, product and cart before your next big sale.</p>
-                    <a href="/shopify-cro-audit" class="btn">CRO Audit</a>
+                    <a href="/shopify-cro-audit/" class="btn" data-i18n="nav.cro">CRO Audit</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -1197,11 +1210,11 @@
                         </div>
 
                     </div>
-                    <h3>SOFTWARE DEVELOPMENT</h3>
-                    <p>Showcase your solutions and attract the right clients! From custom enterprise apps to modern
+                    <h3 data-i18n="home.svcSoftwareTitle">SOFTWARE DEVELOPMENT</h3>
+                    <p data-i18n="home.svcSoftwareBody">Showcase your solutions and attract the right clients! From custom enterprise apps to modern
                         SaaS, APIs, and sleek UI/UX—we turn ideas into high-performing digital products. Ready to build
                         smart and scalable?</p>
-                    <a href="#contact" class="btn">Get in touch</a>
+                    <a href="#contact" class="btn" data-i18n="common.getInTouch">Get in touch</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -1214,12 +1227,12 @@
                         </div>
 
                     </div>
-                    <h3>MOBILE DEVELOPMENT</h3>
-                    <p>Build mobile experiences that perform, engage, and scale! We specialize in cross-platform apps
+                    <h3 data-i18n="home.svcMobileTitle">MOBILE DEVELOPMENT</h3>
+                    <p data-i18n="home.svcMobileBody">Build mobile experiences that perform, engage, and scale! We specialize in cross-platform apps
                         using React Native and Progressive Web Apps (PWAs), delivering high-performance solutions for
                         both iOS and Android — optimized for speed, usability, and growth.</p>
 
-                    <a href="#contact" class="btn">Get in touch</a>
+                    <a href="#contact" class="btn" data-i18n="common.getInTouch">Get in touch</a>
                 </div>
             </div>
         </div>
@@ -1228,9 +1241,9 @@
     <!-- Portfolio Section -->
     <section id="work">
         <div class="container">
-            <p class="section-label">Portfolio</p>
-            <h2 class="section-title">OUR WORK SPEAKS FOR ITSELF</h2>
-            <p class="section-description">
+            <p class="section-label" data-i18n="home.workLabel">Portfolio</p>
+            <h2 class="section-title" data-i18n="home.workTitle">OUR WORK SPEAKS FOR ITSELF</h2>
+            <p class="section-description" data-i18n="home.workIntro">
                 Helping brands become amazing is what we do. And we like to keep doing it. Have a look at some of our
                 rockstar clients and the work we are performing for them.
             </p>
@@ -1238,14 +1251,14 @@
             <div class="portfolio-item item-1">
                 <div class="portfolio-content">
                     <h3>LUMINSKIN</h3>
-                    <p>Lumin Skin is a global men’s skincare brand trusted in over 60 countries. We were brought in to
+                    <p data-i18n="home.luminBody">Lumin Skin is a global men’s skincare brand trusted in over 60 countries. We were brought in to
                         transition their aging Next.js storefront to a fully optimized Shopify Plus ecosystem. Our team
                         rebuilt the entire infrastructure — designing a custom Shopify theme, developing bespoke apps
                         for subscriptions and loyalty, and implementing advanced checkout extensions tailored to their
                         business model. We engineered a scalable foundation for international sales, optimized
                         performance, and elevated the user experience to reflect the premium nature of the brand.</p>
-                    <p class="services">Our Services: Shopify Development</p>
-                    <a href="https://luminskin.com" class="btn">Check it out!</a>
+                    <p class="services" data-i18n="home.servicesShopify">Our Services: Shopify Development</p>
+                    <a href="https://luminskin.com" class="btn" data-i18n="common.checkItOut" data-i18n-skip>Check it out!</a>
                 </div>
                 <div class="portfolio-image">
                     <img src="/assets/shopify_luminskin.png" alt="Shopify Luminskin">
@@ -1258,30 +1271,30 @@
                 </div>
                 <div class="portfolio-content item-2">
                     <h3>MERIDIANGROOMING</h3>
-                    <p>Meridian Grooming is a fast-growing men’s personal care brand with a strong DTC presence across
+                    <p data-i18n="home.meridianBody">Meridian Grooming is a fast-growing men’s personal care brand with a strong DTC presence across
                         the US, Canada, and Europe. We were trusted to migrate their legacy storefront to a fully
                         optimized Shopify Plus stack, building a custom theme, subscription logic, and post-purchase
                         upsell flows tailored to the grooming industry. We developed custom Shopify apps, integrated
                         Loop Subscriptions, Klaviyo, and Recharge, and engineered checkout extensions with age
                         validation, warranty add-ons, and AOV-boosting bundles. The result: a high-conversion, scalable
                         storefront built for performance, seamless user experience, and global expansion.</p>
-                    <p class="services">Our Services: Shopify Development</p>
-                    <a href="https://meridiangrooming.com" class="btn">Check it out!</a>
+                    <p class="services" data-i18n="home.servicesShopify">Our Services: Shopify Development</p>
+                    <a href="https://meridiangrooming.com" class="btn" data-i18n="common.checkItOut" data-i18n-skip>Check it out!</a>
                 </div>
             </div>
 
             <div class="portfolio-item item-3">
                 <div class="portfolio-content">
                     <h3>COUNTER CULTURE</h3>
-                    <p>Counter Culture Store is a UK-based clean beauty marketplace featuring ethically sourced, indie
+                    <p data-i18n="home.counterBody">Counter Culture Store is a UK-based clean beauty marketplace featuring ethically sourced, indie
                         skincare brands. We redesigned their Shopify theme from the ground up, focusing on a cleaner
                         layout, improved product discovery, and a smoother mobile shopping experience. We built custom
                         sections for curated collections, brand storytelling, and ingredient-focused product pages. We
                         enhanced SEO performance, improved accessibility compliance, and optimized page speed to support
                         growth and increase visibility in organic search. The result: a modern, high-converting
                         storefront that aligns with the brand’s mission of conscious beauty.</p>
-                    <p class="services">Our Services: Shopify Development</p>
-                    <a href="https://counterculturestore.co.uk" class="btn">Check it out!</a>
+                    <p class="services" data-i18n="home.servicesShopify">Our Services: Shopify Development</p>
+                    <a href="https://counterculturestore.co.uk" class="btn" data-i18n="common.checkItOut" data-i18n-skip>Check it out!</a>
                 </div>
                 <div class="portfolio-image">
                     <img src="/assets/shopify_counter_culture_store.png" alt="Counter Culture Store">
@@ -1294,7 +1307,7 @@
                 </div>
                 <div class="portfolio-content">
                     <h3>MONDAINE WATCHES</h3>
-                    <p>Mondaine is an iconic Swiss watchmaker known for its timeless design, railway clock heritage, and
+                    <p data-i18n="home.mondaineBody">Mondaine is an iconic Swiss watchmaker known for its timeless design, railway clock heritage, and
                         precision craftsmanship. We helped elevate their digital presence by optimizing their Shopify
                         storefront with a refined, minimalist design that reflects the brand’s premium identity. We
                         enhanced product storytelling with custom sections for watch collections, materials, and
@@ -1302,20 +1315,20 @@
                         metafield-driven content, and conversion-focused UX updates, the store now delivers a more
                         elegant, faster, and engaging shopping experience worthy of the Mondaine name.
                     </p>
-                    <p class="services">Our Services: Branding, Website Development, Shopify Development</p>
-                    <a href="https://mondaine.com" class="btn">Check it out!</a>
+                    <p class="services" data-i18n="home.servicesBranding">Our Services: Branding, Website Development, Shopify Development</p>
+                    <a href="https://mondaine.com" class="btn" data-i18n="common.checkItOut" data-i18n-skip>Check it out!</a>
                 </div>
             </div>
 
             <div class="portfolio-item item-5">
                 <div class="portfolio-content">
                     <h3>Quality Street</h3>
-                    <p>
+                    <p data-i18n="home.qualityBody">
                         We partnered with Nestlé to enhance their iconic Quality Street brand by enabling a personalized gifting experience for their customers.
                         Our team developed a seamless solution that allowed users to create custom boxes and gift cards.
                     </p>
-                    <p class="services">Our Services: Print on Demand Integration</p>
-                    <a href="https://qualitystreetchocolate.com/" class="btn" target="_blank" rel="noopener">Check it out!</a>
+                    <p class="services" data-i18n="home.servicesPod">Our Services: Print on Demand Integration</p>
+                    <a href="https://qualitystreetchocolate.com/" class="btn" target="_blank" rel="noopener" data-i18n="common.checkItOut" data-i18n-skip>Check it out!</a>
                 </div>
                 <div class="portfolio-image">
                     <img src="/assets/nestle-custom-tin.webp" alt="Nestle Integration">
@@ -1330,14 +1343,14 @@
                 </div>
                 <div class="portfolio-content">
                     <h3>Pangaea Holdings</h3>
-                    <p>
+                    <p data-i18n="home.pangaeaBody">
                         We partnered with Pangaea Holdings to build a custom Shopify app supporting advanced analytics, post-purchase flows, dynamic discount creation, and theme content translation.
                         The solution helps streamline marketing operations, improve customer engagement, and provide actionable insights directly within the Shopify ecosystem.
                     </p>
-                    <p class="services">
+                    <p class="services" data-i18n="home.servicesPangaea">
                         Our Services: Custom Shopify App Development, Analytics, Post-Purchase Features, Discount Automation, Theme Localization
                     </p>
-                    <a href="https://pangaea.holdings" class="btn" target="_blank" rel="noopener">
+                    <a href="https://pangaea.holdings" class="btn" target="_blank" rel="noopener" data-i18n="common.checkItOut" data-i18n-skip>
                         Check it out!
                     </a>
                 </div>
@@ -1351,9 +1364,9 @@
     <!-- Process Section -->
     <section id="process">
         <div class="container">
-            <p class="section-label">The Process</p>
-            <h2 class="section-title">LET'S KEEP IT SIMPLE</h2>
-            <p class="section-description">
+            <p class="section-label" data-i18n="home.processLabel">The Process</p>
+            <h2 class="section-title" data-i18n="home.processTitle">LET'S KEEP IT SIMPLE</h2>
+            <p class="section-description" data-i18n="home.processIntro">
                 From start to finish, our work process is as simple as they come. But the journey is always magic!
             </p>
 
@@ -1366,8 +1379,8 @@
                 <!-- Right: Steps -->
                 <div class="process-steps">
                     <div class="process-step">
-                        <h3>01. YOU GET IN TOUCH, WE GET A LOOK</h3>
-                        <p>
+                        <h3 data-i18n="home.process1Title">01. YOU GET IN TOUCH, WE GET A LOOK</h3>
+                        <p data-i18n="home.process1Body">
                             First of all, let's meet! We choose our clients carefully, both as a person and as a brand.
                             You probably don't trust us yet, and that needs to be fixed! Anything regarding this
                             flirting
@@ -1376,8 +1389,8 @@
                     </div>
 
                     <div class="process-step">
-                        <h3>02. WE MAKE THE PLAN, YOU PAY THE MONEY</h3>
-                        <p>
+                        <h3 data-i18n="home.process2Title">02. WE MAKE THE PLAN, YOU PAY THE MONEY</h3>
+                        <p data-i18n="home.process2Body">
                             Once we are all onboard, we start planning. We'll need your involvement, but it won't take
                             long.
                             For the project planning phase, we take a 20% non-refundable retainer, and once everything
@@ -1387,8 +1400,8 @@
                     </div>
 
                     <div class="process-step">
-                        <h3>03. WE GET IT DONE, YOU MAKE THE MONEY</h3>
-                        <p>
+                        <h3 data-i18n="home.process3Title">03. WE GET IT DONE, YOU MAKE THE MONEY</h3>
+                        <p data-i18n="home.process3Body">
                             Now we get the work you paid for done, with a clear promise of a deadline. We make sure
                             everything is perfect before we deliver it to you, we talk about any future services you
                             might
@@ -1404,12 +1417,12 @@
     <!-- Contact CTA -->
     <section id="contact">
         <div class="container" style="text-align: center;">
-            <h2 class="section-title">WANT TO GET IN TOUCH?</h2>
-            <p class="section-description">
+            <h2 class="section-title" data-i18n="home.contactTitle">WANT TO GET IN TOUCH?</h2>
+            <p class="section-description" data-i18n="home.contactBody">
                 If you're already sold on working with us, just tap the button below and email us. We
                 will get back to you in no time!
             </p>
-            <a href="mailto:office@uvatime.com" class="btn">Get in touch</a>
+            <a href="mailto:office@uvatime.com" class="btn" data-i18n="common.getInTouch" data-i18n-skip>Get in touch</a>
         </div>
     </section>
 </div>
@@ -1425,15 +1438,15 @@
 
                 </div>
                 <div class="footer-links">
-                    <a href="#about">About </a>
+                    <a href="#about" data-i18n="nav.about">About </a>
                     <div class="text-divider" bis_skin_checked="1">/</div>
-                    <a href="#services">Services</a>
+                    <a href="#services" data-i18n="nav.services">Services</a>
                     <div class="text-divider" bis_skin_checked="1">/</div>
-                    <a href="#work">Portfolio</a>
+                    <a href="#work" data-i18n="nav.work">Portfolio</a>
                 </div>
             </div>
             <div class="footer-section">
-                <h4 style="padding-top:1rem;">Get in touch</h4>
+                <h4 style="padding-top:1rem;" data-i18n="footer.getInTouch">Get in touch</h4>
                 <a href="mailto:office@uvatime.com" style="margin-bottom: 0.5rem;">office@uvatime.com</a>
                 <a href="tel:+40752883350" style="padding-bottom: 1rem">+40 752 883 350</a>
                 <div class="line" bis_skin_checked="1"></div>
@@ -1459,10 +1472,10 @@
 
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Copyright UVATIME S.R.L.</p>
+            <p data-i18n="footer.copyright">© 2026 Copyright UVATIME S.R.L.</p>
             <div class="footer-bottom-links">
-                <a href="/terms-and-conditions">Terms & Conditions</a>
-                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-and-conditions/" data-i18n="footer.terms">Terms & Conditions</a>
+                <a href="/privacy-policy/" data-i18n="footer.privacy">Privacy Policy</a>
             </div>
         </div>
     </div>
@@ -1471,21 +1484,21 @@
 <!-- Shopify CRO Audit promo -->
 <div class="cro-promo-overlay" id="croPromoOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="croPromoTitle">
     <div class="cro-promo-modal">
-        <button type="button" class="cro-promo-close" id="croPromoClose" aria-label="Close">&times;</button>
+        <button type="button" class="cro-promo-close" id="croPromoClose" aria-label="Close" data-i18n-attr="aria-label:common.close">&times;</button>
         <div class="cro-promo-inner">
-            <div class="cro-promo-badge">Limited · Until Nov 9</div>
-            <h2 id="croPromoTitle">Shopify CRO Audit</h2>
-            <p>
+            <div class="cro-promo-badge" data-i18n="home.promoBadge">Limited · Until Nov 9</div>
+            <h2 id="croPromoTitle" data-i18n="home.promoTitle">Shopify CRO Audit</h2>
+            <p data-i18n="home.promoBody">
                 We mark up your homepage, collection, product page and cart in Figma — desktop &amp; mobile — so your team can ship conversion fixes before Black Friday.
             </p>
             <div class="cro-promo-price">
                 <span class="now">199€</span>
                 <span class="was">350€</span>
-                <span class="until">early bird</span>
+                <span class="until" data-i18n="home.promoUntil">early bird</span>
             </div>
             <div class="cro-promo-actions">
-                <a class="cro-promo-cta" href="/shopify-cro-audit/">See the audit offer</a>
-                <button type="button" class="cro-promo-dismiss" id="croPromoDismiss">Not now</button>
+                <a class="cro-promo-cta" href="/shopify-cro-audit/" data-i18n="home.promoCta">See the audit offer</a>
+                <button type="button" class="cro-promo-dismiss" id="croPromoDismiss" data-i18n="common.notNow">Not now</button>
             </div>
         </div>
     </div>

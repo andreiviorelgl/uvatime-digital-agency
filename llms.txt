@@ -18,6 +18,12 @@ UVATIME helps e-commerce brands build high-performing Shopify stores and fix con
 - [Privacy Policy](https://uvatime.com/privacy-policy/)
 - [Terms and Conditions](https://uvatime.com/terms-and-conditions/)
 
+## Languages
+
+The site is available in English plus path-prefixed locales with flag language switcher and browser auto-detect:
+- German `/de/` · Danish `/da/` · Dutch `/nl/` · French `/fr/` · Spanish `/es/` · Italian `/it/` · Belgian (Flemish) `/be/`
+- Example: [Shopify CRO Audit (IT)](https://uvatime.com/it/shopify-cro-audit/)
+
 ## Contact
 
 - Email: office@uvatime.com
