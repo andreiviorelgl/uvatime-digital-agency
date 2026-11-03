@@ -8,6 +8,7 @@ UVATIME helps e-commerce brands build high-performing Shopify stores and fix con
 
 - [Shopify CRO Audit](https://uvatime.com/shopify-cro-audit/): 3-business-day conversion audit of homepage, collection, product page and cart (desktop + mobile). Deliverables: annotated before/after Figma layouts, expected-effect notes, priority list (before Black Friday vs after), walkthrough call. Early bird 199 EUR until 9 November 2026, then 350 EUR. No Shopify admin access required — live store URL is enough. Implementation quoted separately.
 - [Shopify Development Offers](https://uvatime.com/shopify-offers/): Full Shopify store packages — Fastrack 2600 EUR, Enhanced 3600 EUR, Bespoke 6600 EUR.
+- [Uvatime: Product Families Sync](https://product-families.uvatime.com): Public Shopify app — sibling product families, storefront swatches, Auto-Families, metafield sync. Free up to 5 families; Pro unlimited + CSV + REST API.
 - Software development and mobile (React Native / PWA) — see homepage.
 
 ## Key pages
